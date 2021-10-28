@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue Basics</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Jost:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Monster Slayer</h1>
+    </header>
+    <div id="app">
+      <div class="container">
+        <div class="item" id="user">
+          <p>User</p>
+          <div class="heart-wrap">
+            <div :style="{width: userHeart + '%'}" class="heart"></div>
+          </div>
+        </div>
+        <div class="item" id="monster">
+          <p>Monster</p>
+          <div class="heart-wrap">
+            <div :style="{width: monsterHeart + '%'}" class="heart"></div>
+          </div>
+        </div>
+      </div>
+      <div class="controls">
+        <button v-if="!isFighting" @click="userAttack">Attack</button>
+      </div>
+    </div>
+    <script src="https://unpkg.com/vue@next"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
