@@ -4,10 +4,12 @@
 
 html {
   font-family: 'Jost', sans-serif;
+  font-size: 16px;
 }
 
 body {
   margin: 0;
+  box-sizing: border-box;
 }
 
 header {
@@ -16,7 +18,7 @@ header {
   background-color: #880017;
   color: white;
   text-align: center;
-  margin-bottom: 2rem;
+  margin-bottom: 0.5rem;
 }
 
 section {
@@ -29,26 +31,52 @@ section {
   display: flex;
   justify-content: space-around;
   margin-bottom: 50px;
+  margin-top: 10px;
+  background-image: url("img/background.png");
+  object-fit: contain;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 650px;
 }
 
 .item {
   width: 300px;
   text-align: center;
+  color: white;
 }
+.item .char_image{
+  display: flex;
+  align-content: center;
+}
+#user .char_image img{
+  margin-top: 220px;
+  width: 160px;
+}
+#monster .char_image img{
+  margin-top: 270px;
+  width: 260px;
+}
+
+
 
 .heart-wrap {
   border: 1px solid;
+  border-radius: 15%;
+  background-color: rgb(150, 151, 151);
 }
 
 .heart {
   height: 36px;
   background-color: #42ad0b;
+  border-radius: 15%;
 }
 
 .controls {
   display: flex;
-  justify-content: center;
+  justify-content:center;
   align-items: center;
+  margin-top: -100px;
+  flex-direction: row;
 }
 
 .controls button {
@@ -56,4 +84,5 @@ section {
   width: 100px;
   height: 30px;
   background: #880a17;
+  margin: 0 20px;
 }
