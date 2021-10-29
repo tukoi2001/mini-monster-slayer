@@ -26,25 +26,25 @@ header h1, p {
 }
 .nav {
   text-align: center;
-  width: 80%;
-  margin: 0 auto;
-}
-.nav img {
-  width: 60px;
-  height: auto;
-  animation: zoomIn 1s linear infinite;
+  /* width: 80%; */
+  /* margin: 0 auto; */
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
 }
 .nav-para {
   background-image: linear-gradient(to right bottom , #0d902b, #cfdc2df0);
   padding: 5px;
   width: 65px;
   border-radius: 50%;
-  border: 1px solid rgb(224, 7, 7);
+  border: 1px solid rgb(255,255,255);
   box-shadow: 15px 5px 10px rgba(3, 3, 3, .24);
   cursor: pointer;
   font-size: 18px;
   font-weight: 500;
   color: #0a2375;
+  margin: 10px;
 }
 section {
   width: 90%;
@@ -55,34 +55,41 @@ section {
   background-image: url(./image/bg-fightt.jpg);
   background-position: center;
   background-repeat: no-repeat;
-  height: calc(100vh - (160px));  
+  height: calc(100vh - (64px));  
   width: 100%;
+  background-size: cover;
+  position: relative;
 }
 .container {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   margin-bottom: 50px;
+  max-width: 100%!important;
 }
 
 .item {
-  width: 300px;
+  width: 500px;
   text-align: center;
+  padding-top: 70px;
 }
 .item__title {
   font-size: 24px;
   padding: 0.5rem;
-  font-weight: 500;
-  text-shadow: 1px 2px #f3eceb;
+  text-shadow: 1px 2px #000;
+  color: #e3fb00;
+  font-weight: bold;
 }
 .heart-wrap {
-  border: 2px solid #e7ecf0;
+  border: 4px solid #ccc;
   border-radius: 10px;
-  overflow: hidden;                                   
+  overflow: hidden;   
+  width: 340px!important;    
+  margin: 0 auto;                            
 }
 
 .heart {
-  height: 30px;
-  background-color: #42ad0b;
+  height: 25px;
+  background: linear-gradient(90deg, rgba(193,0,0,1) 0%, rgba(233,137,2,1) 53%, rgba(0,255,63,1) 100%);
 }
 
 .controls {
@@ -97,7 +104,16 @@ section {
   height: 30px;
   background: #880a17;
 }
+/* vs */
 
+.vs__img {
+  position: absolute;
+  width: 200px;
+  height: auto;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
 /* Character */
 .character {
   padding: 10px;
@@ -110,7 +126,11 @@ section {
   height: auto;
   border-radius: 10px;
 }
-
+#dragon {
+  transform: scaleX(-1);
+  width: 400px;
+  height: auto;
+}
 /* Skill Box */
 .skill-box {
   padding: 10px;
@@ -118,22 +138,19 @@ section {
 }
 
 .skill-box__img {
-  width: 40px;
+  width: 50px;
   height: auto;
   margin: 10px;
   cursor: pointer;
+  border-radius: 50%;
+  box-shadow: 10px 5px 15px rgb(255 255 255 / 50%);
+  border: 2px solid #FFF;
 }
 
 
-/* Keyframe */
-@keyframes zoomIn {
-  0% {
-    transform: scale(1.1);
-  }
-  50% {
-    transform: scale(1);
-  }
-  100% {
-    transform: scale(0.9)
-  }
+/* Nhân vật */
+
+.character-box {
+  position: fixed;
+  z-index: 99;
 }

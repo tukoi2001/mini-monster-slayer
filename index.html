@@ -15,44 +15,75 @@
     <header> 
       <h1>Monster Slayer</h1>
     </header>
-    <div class="nav p-2 d-flex justify-content-around align-items-center">
-      <p class="nav-para"><span>Nhân vật</span></p>
-      <p class="nav-para"><span>Quái vật</span></p>
-      <img src="./image/logo.jpg" alt="logo" class="">
-      <p class="nav-para"><span>Độ khó</span></p>
-      <p class="nav-para"><span>Luật chơi</span></p>
-    </div>
+    
     <div id="app">
+      <div class="nav p-2 d-flex justify-content-around align-items-center">
+        <ul class="nav-bar list-unstyled">
+          <li class="nav-para ">
+            Nhân vật
+          </li>
+          <li class="nav-para">
+            Quái vật
+          </li>
+          <li class="nav-para">
+            Độ khó
+          </li>
+          <li class="nav-para">
+            Luật chơi
+          </li>
+        </ul>
+      </div>
+      <div class="vs">
+        <img class="vs__img" src="./image/vs2.png" alt="">
+      </div>
       <div class="container">
         <div class="item" id="user">
-          <p class="item__title">User</p>
+          <p class="item__title text-uppercase">User</p>
           <div class="heart-wrap">
             <div :style="{width: userHeart + '%'}" class="heart"></div>
           </div>
           <div class="character">
-            <img class="character__img" src="./image/yasuo.jpg" alt="">
+            <img class="character__img" src="./image/user2.gif" alt=""> 
           </div>
           <div class="skill-box">
             <img src="./image/skill1.png" class="skill-box__img" alt="skill1">
             <img src="./image/skill2.png" class="skill-box__img" alt="skill2">
+            <img src="./image/YorickQ.png" class="skill-box__img" alt="skill3">
           </div>
         </div>
         <div class="item" id="monster">
-          <p class="item__title">Monster</p>
+          <p class="item__title text-uppercase">Monster</p>
           <div class="heart-wrap">
             <div :style="{width: monsterHeart + '%'}" class="heart"></div>
           </div>
+          <div class="character">
+            <img id="dragon" class="character__img" src="./image/dragon-icegif.gif" alt=""> 
+          </div>
           <div class="skill-box">
-            <!-- Phong -->
-            
-
-            <!--  -->
+  
           </div>
         </div>
       </div>
       <div class="controls">
         <button v-if="!isFighting" @click="userAttack">Attack</button>
       </div>
+
+      <!-- Nhân vật -->
+      <div class="character-box">
+        <h2 class="character-box__title">
+          Chọn Nhân Vật
+        </h2>
+        <div class="character-box__item">
+          <h4>
+            Name
+            <span> thuộc tính</span>
+            <span>Dame</span>
+          </h4>
+          <img src="./image/user2.gif" alt="user_2">
+        </div>
+      </div>
+      <!-- Nhân vật -->
+      
     </div>
     <script src="https://unpkg.com/vue@next"></script>
     <script src="app.js"></script>
