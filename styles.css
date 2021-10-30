@@ -1,9 +1,11 @@
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 html {
-  font-family: "Jost", sans-serif;
+  font-family: 'Jost', sans-serif;
 }
 
 body {
@@ -12,65 +14,82 @@ body {
 
 header {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
-  padding: 0.5rem;
+  padding: .5rem;
   background-color: #880017;
   color: white;
   text-align: center;
+  overflow: hidden;
+  /* margin-bottom: 2rem; */
 }
-
+header h1, p {
+  margin: 0;
+}
+.nav {
+  text-align: center;
+  /* width: 80%; */
+  /* margin: 0 auto; */
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+}
+.nav-para {
+  background-image: linear-gradient(to right bottom , #0d902b, #cfdc2df0);
+  padding: 5px;
+  width: 65px;
+  border-radius: 50%;
+  border: 1px solid rgb(255,255,255);
+  box-shadow: 15px 5px 10px rgba(3, 3, 3, .24);
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: 500;
+  color: #0a2375;
+  margin: 10px;
+}
 section {
   width: 90%;
   max-width: 40rem;
   margin: auto;
 }
-
+#app {
+  background-image: url(./image/bg-fightt.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  height: calc(100vh - (64px));  
+  width: 100%;
+  background-size: cover;
+  position: relative;
+}
 .container {
   display: flex;
   justify-content: space-around;
-  margin-bottom: 20px;
-  background-image: url(../img/back.jpg);
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  height: 800px;
+  margin-bottom: 50px;
+  max-width: 100%!important;
 }
 
 .item {
-  width: auto;
+  width: 500px;
   text-align: center;
+  padding-top: 70px;
 }
-
-.item p {
-  color: white;
-  font-size: 20px;
+.item__title {
+  font-size: 24px;
+  padding: 0.5rem;
+  text-shadow: 1px 2px #000;
+  color: #e3fb00;
   font-weight: bold;
-  text-transform: uppercase;
-  margin-bottom: 10px;
 }
-
 .heart-wrap {
-  border: 5px solid #ccc;
-}
-
-.img-user img,
-.img-monster img {
-  height: 600px;
-  margin-top: 20px;
+  border: 4px solid #ccc;
+  border-radius: 10px;
+  overflow: hidden;   
+  width: 340px!important;    
+  margin: 0 auto;                            
 }
 
 .heart {
-  height: 20px;
-  background: linear-gradient(
-    90deg,
-    rgba(37, 139, 38, 1) 0%,
-    rgba(12, 232, 96, 1) 35%,
-    rgba(193, 243, 1, 1) 76%,
-    rgba(254, 255, 0, 1) 100%
-  );
-}
-
-.heart-wrap {
-  width: 500px;
+  height: 25px;
+  background: linear-gradient(90deg, rgba(193,0,0,1) 0%, rgba(233,137,2,1) 53%, rgba(0,255,63,1) 100%);
 }
 
 .controls {
@@ -80,8 +99,60 @@ section {
 }
 
 .controls button {
-  color: #ffffff;
+  color: #FFFFFF;
   width: 100px;
   height: 30px;
   background: #880a17;
 }
+/* vs */
+
+.vs__img {
+  position: absolute;
+  width: 200px;
+  height: auto;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
+/* Character */
+.character {
+  padding: 10px;
+  margin: 0;
+  border-radius: 10px;
+  overflow: hidden;
+}
+.character__img {
+  width: 230px;
+  height: auto;
+  border-radius: 10px;
+}
+#dragon {
+  transform: scaleX(-1);
+  width: 400px;
+  height: auto;
+}
+/* Skill Box */
+.skill-box {
+  padding: 10px;
+  margin: 0;
+}
+
+.skill-box__img {
+  width: 50px;
+  height: auto;
+  margin: 10px;
+  cursor: pointer;
+  border-radius: 50%;
+  box-shadow: 10px 5px 15px rgb(255 255 255 / 50%);
+  border: 2px solid #FFF;
+}
+
+
+/* Nhân vật */
+
+.character-box {
+  position: fixed;
+  z-index: 99;
+}
+
+/* Nhân vật */
