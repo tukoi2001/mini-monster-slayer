@@ -3,7 +3,7 @@
 }
 
 html {
-  font-family: 'Jost', sans-serif;
+  font-family: "Jost", sans-serif;
 }
 
 body {
@@ -16,7 +16,6 @@ header {
   background-color: #880017;
   color: white;
   text-align: center;
-  margin-bottom: 2rem;
 }
 
 section {
@@ -28,21 +27,50 @@ section {
 .container {
   display: flex;
   justify-content: space-around;
-  margin-bottom: 50px;
+  margin-bottom: 20px;
+  background-image: url(../img/back.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 800px;
 }
 
 .item {
-  width: 300px;
+  width: auto;
   text-align: center;
 }
 
+.item p {
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
 .heart-wrap {
-  border: 1px solid;
+  border: 5px solid #ccc;
+}
+
+.img-user img,
+.img-monster img {
+  height: 600px;
+  margin-top: 20px;
 }
 
 .heart {
-  height: 36px;
-  background-color: #42ad0b;
+  height: 20px;
+  background: linear-gradient(
+    90deg,
+    rgba(37, 139, 38, 1) 0%,
+    rgba(12, 232, 96, 1) 35%,
+    rgba(193, 243, 1, 1) 76%,
+    rgba(254, 255, 0, 1) 100%
+  );
+}
+
+.heart-wrap {
+  width: 500px;
 }
 
 .controls {
@@ -52,7 +80,7 @@ section {
 }
 
 .controls button {
-  color: #FFFFFF;
+  color: #ffffff;
   width: 100px;
   height: 30px;
   background: #880a17;
