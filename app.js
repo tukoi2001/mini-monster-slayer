@@ -1,3 +1,7 @@
+import { createPopper } from '@popperjs/core';
+
+
+
 const app = Vue.createApp({
   data() {
     return {
@@ -19,11 +23,13 @@ const app = Vue.createApp({
     monsterAttack() {
       this.userHeart -= this.monsterDamage
       this.isFighting = false
-    }
+    },
+     
   }
+   
 });
 
-app.mount('#app');
+ app.mount('#app');
 
 // 1. Thêm hình ảnh ng chơi, quái vật. (Thêm đc hiệu ứng tấn công 1 tí thì tốt)
 // 2. Nếu máu user hoặc monster < 0 thì hiện endgame

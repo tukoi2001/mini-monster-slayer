@@ -18,7 +18,39 @@ header {
   background-color: #880017;
   color: white;
   text-align: center;
+<<<<<<< Updated upstream
   margin-bottom: 0.5rem;
+=======
+  overflow: hidden;
+  /* margin-bottom: 2rem; */
+}
+header h1, p {
+  margin: 0;
+}
+.nav {
+  text-align: center;
+  /* width: 80%; */
+  /* margin: 0 auto; */
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+}
+.nav-para {
+  background-image: linear-gradient(to right bottom , #0d902b, #cfdc2df0);
+  padding: 5px;
+  width: 65px;
+  border-radius: 50%;
+  border: 1px solid rgb(255,255,255);
+  box-shadow: 15px 5px 10px rgba(3, 3, 3, .24);
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: 500;
+  color: #0a2375;
+  margin: 10px;
+  cursor: pointer;
+
+>>>>>>> Stashed changes
 }
 
 section {
@@ -31,12 +63,17 @@ section {
   display: flex;
   justify-content: space-around;
   margin-bottom: 50px;
+<<<<<<< Updated upstream
   margin-top: 10px;
   background-image: url("img/background.png");
   object-fit: contain;
   background-repeat: no-repeat;
   background-size: cover;
   height: 650px;
+=======
+  max-width: 100%!important;
+   
+>>>>>>> Stashed changes
 }
 
 .item {
@@ -84,5 +121,83 @@ section {
   width: 100px;
   height: 30px;
   background: #880a17;
+<<<<<<< Updated upstream
   margin: 0 20px;
 }
+=======
+}
+/* vs */
+
+.vs__img {
+  position: absolute;
+  width: 200px;
+  height: auto;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
+/* Character */
+.character {
+  padding: 10px;
+  margin: 0;
+  border-radius: 10px;
+  overflow: hidden;
+}
+.character__img {
+  width: 230px;
+  height: auto;
+  border-radius: 10px;
+}
+#dragon {
+  transform: scaleX(-1);
+  width: 400px;
+  height: auto;
+}
+/* Skill Box */
+.skill-box {
+  padding: 10px;
+  margin: 0;
+}
+
+.skill-box__img {
+  width: 50px;
+  height: auto;
+  margin: 10px;
+  cursor: pointer;
+  border-radius: 50%;
+  box-shadow: 10px 5px 15px rgb(255 255 255 / 50%);
+  border: 2px solid #FFF;
+}
+
+
+/* Nhân vật */
+
+.character-box {
+  position: relative;
+  z-index: 0;
+  display: block;
+   
+  background-color: #000;
+  width: auto;
+  object-fit: cover;
+  color: white;
+  font-size: 1.5rem;
+}
+.character-box__list{
+  display: flex;
+flex-direction: row;
+}
+.character-box__list h4,span{
+width: 25%;
+height: 150px;
+}
+.character-box .character-box__item {
+display: flex;
+flex-direction: row;
+}
+
+.character-box__item img,h4,span,p{
+  width: 25%;
+  }
+/* Nhân vật */
+>>>>>>> Stashed changes

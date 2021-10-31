@@ -8,6 +8,11 @@
       href="https://fonts.googleapis.com/css2?family=Jost:wght@400;700&display=swap"
       rel="stylesheet"
     />
+<<<<<<< Updated upstream
+=======
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" 
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+>>>>>>> Stashed changes
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
@@ -15,14 +20,47 @@
       <h1>Monster Slayer</h1>
     </header>
     <div id="app">
+<<<<<<< Updated upstream
+=======
+      <div class="nav p-2 d-flex justify-content-around align-items-center">
+        <ul class="nav-bar list-unstyled">
+          <li class="nav-para " id="char">
+            Nhân vật
+            <button   @click="open_page_char">Attack</button>
+          </li>
+          <li class="nav-para">
+            Quái vật
+          </li>
+          <li class="nav-para">
+            Độ khó
+          </li>
+          <li class="nav-para">
+            Luật chơi
+          </li>
+        </ul>
+      </div>
+      <div class="vs">
+        <img class="vs__img" src="./image/vs2.png" alt="">
+      </div>
+>>>>>>> Stashed changes
       <div class="container">
         <div class="item" id="user">
           <p>User</p>
           <div class="heart-wrap">
             <div :style="{width: userHeart + '%'}" class="heart"></div>
           </div>
+<<<<<<< Updated upstream
           <div class="char_image">
           <img src="img/char.png">
+=======
+          <div class="character">
+            <img class="character__img" src="./image/User/kiem_su.jpg" alt=""> 
+          </div>
+          <div class="skill-box">
+            <img src="./image/skill1.png" class="skill-box__img" alt="skill1">
+            <img src="./image/skill2.png" class="skill-box__img" alt="skill2">
+            <img src="./image/YorickQ.png" class="skill-box__img" alt="skill3">
+>>>>>>> Stashed changes
           </div>
         </div>
         <div class="item" id="monster">
@@ -41,7 +79,89 @@
         <button v-if="!isFighting" @click="userAttack">Skill2</button>
         <button v-if="!isFighting" @click="userAttack">Heal</button>
       </div>
+<<<<<<< Updated upstream
+=======
+
+      <!-- Nhân vật -->
+      <div class="character-box">
+        <h2 class="character-box__title">
+          Chọn Nhân Vật
+        </h2>
+        <div class="character-box__list">
+            <h4>____________</h4>
+            <h4>Tên</h4>
+            <span> Thuộc tính</span>
+            <span>Giới thiệu</span>
+            
+        </div>
+        <ul>
+          <li class="character-box__item">
+            <img src="./image/User/erhardt-octopath.gif" alt="user_2">
+            <h4>Erhadt</h4>
+            <span> Quang</span>
+            <p>Kiếm sĩ từ đại lục Luminon     </p></li>
+
+          <li class="character-box__item">
+            <img src="./image/User/giac_dau_si.gif" alt="user_2">
+            <h4>ShovelKnight</h4>
+            <span> Lôi</span>
+            <p> Hiệp sĩ đi ra từ hầm ngục tăm tối    </p></li>
+
+          <li class="character-box__item">
+            <img src="./image/User/hiep_si.gif" alt="user_2">
+            <h4>Arthur</h4>
+            <span> Vật lí</span>
+            <p>Hiêp sĩ dòng đền đại diện cho hiêp hội   </p></li>
+    
+          <li class="character-box__item">
+            <img src="./image/User/honda_sumo.gif" alt="user_2">
+            <h4>Honda</h4>
+            <span>Vật lí</span></span>
+            <p>Võ sĩ Sumo từ Wano     </p></li>
+      
+          <li class="character-box__item">
+            <img src="./image/User/rochyn_idle.gif" alt="user_2">
+            <h4>Rochyn</h4>
+            <span> Băng</span>
+            <p> Pháp sư từ tháp lâm       </p></li>
+        
+          <li class="character-box__item">
+            <img src="./image/User/sorcerer.gif" alt="user_2">
+            <h4>Alex</h4>
+            <span> Hắc ám </span>
+            <p> Vu sư từ rừng Hắc ám     </p></li>
+
+          <li class="character-box__item">
+            <img src="./image/User/Usfiv_hakan.gif" alt="user_2">
+            <h4>Hakan</h4>
+            <span>Hắc ám</span>
+            <p>Cuồng chiến sĩ đến từ Abyss     </p></li>
+                                         
+        </ul>
+         
+      </div>
+      <!-- Nhân vật -->
+
+      <!-- Quái vật -->
+
+
+
+       <!-- Quái vật -->
+
+
+
+       <!-- Độ khó -->
+
+
+       <!-- Độ khó -->
+
+      <!-- Luật chơi -->
+
+
+      <!-- Luật chơi -->
+>>>>>>> Stashed changes
     </div>
+    <script src="https://unpkg.com/@popperjs/core@2"></script>
     <script src="https://unpkg.com/vue@next"></script>
     <script src="app.js"></script>
   </body>
