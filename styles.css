@@ -39,7 +39,7 @@ header h1, p {
   width: 65px;
   border-radius: 50%;
   border: 1px solid rgb(255,255,255);
-  box-shadow: 15px 5px 10px rgba(3, 3, 3, .24);
+  box-shadow: 5px 5px 10px rgba(255,255,255, 0.3);
   cursor: pointer;
   font-size: 18px;
   font-weight: 500;
@@ -150,9 +150,68 @@ section {
 
 /* Nhân vật */
 
-.character-box {
+.popup {
+  /* display: none; */
   position: fixed;
   z-index: 99;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(255,255,255, 0.4);
+  top: 0;
+  left: 0;
+  transition: all 0.5s;
+}
+.popup__content {
+  width: 30%;
+  height: 280px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #880a17;
+  border-radius: 30px;
+  box-shadow: 10px 10px 20px rgba(0,0,0,0.6);
+  border: 1px solid rgba(255,255,255,0.8);
+  text-align: center;
+  padding: 30px 20px;
+}
+.popup__title {
+  font-size: 28px;
+  color: #FFF;
+}
+.popup__title span {
+  display: block;
+  padding-top: 20px;
+}
+.popup__btn {
+  margin-top: 30px;
+  padding: 5px 15px;
+  font-size: 18px;
+  outline: none;
+  border-radius: 10px;
+  border: none;
+  box-shadow: 5px 5px 10px rgba(0,0,0,0.6);
 }
 
+/* notify */
+.notify {
+  position: absolute;
+  top: auto;
+  left: 280px;
+  bottom: 77px;
+}
+.notify__para {
+  color: #f00;
+  font-size: 18px;
+  font-weight: bold;
+  text-shadow: 1px 2px #000;
+}
 /* Nhân vật */
+
+/* transition */
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .7s;
+}
+.fade-enter, .fade-leave-to {
+  opacity: 0;
+}

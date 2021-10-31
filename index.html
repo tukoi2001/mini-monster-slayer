@@ -3,13 +3,14 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vue Basics</title>
+    <title>Monster Slayer</title>
     <link
       href="https://fonts.googleapis.com/css2?family=Jost:wght@400;700&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="styles.css" />
+    <link rel="shortcut icon" href="./image/logo.png" type="image/x-icon">
   </head>
   <body>
     <header> 
@@ -45,10 +46,11 @@
           <div class="character">
             <img class="character__img" src="./image/user2.gif" alt=""> 
           </div>
-          <div class="skill-box">
-            <img src="./image/skill1.png" class="skill-box__img" alt="skill1">
+          <div class="skill-box" v-if="!isFighting">
+            <img src="./image/skill1.png" class="skill-box__img" alt="skill1" @click="userAttack">
             <img src="./image/skill2.png" class="skill-box__img" alt="skill2">
             <img src="./image/YorickQ.png" class="skill-box__img" alt="skill3">
+            <img src="./image/heal.png" class="skill-box__img" alt="skill4" @click="addHealth(), checkUserHeart()">
           </div>
         </div>
         <div class="item" id="monster">
@@ -59,29 +61,29 @@
           <div class="character">
             <img id="dragon" class="character__img" src="./image/dragon-icegif.gif" alt=""> 
           </div>
-          <div class="skill-box">
-  
+
+        </div>
+      </div>
+      <div class="notify">
+        <p class="notify__para" v-if="countHealth == 2 ? true : false">Bạn đã hết quyền hồi máu!</p>
+      </div>
+      <!-- <div class="controls">
+        <button >Attack</button>
+      </div> -->
+      <!-- Popup -->
+      <transition name="fade">
+        <div class="popup" v-if="isShowPopup">
+          <div class="popup__content">
+            <h2 class="popup__title">
+              Chào mừng các bạn đến với trò chơi đối kháng Monster Slayer!
+              <span>Make by Nhóm 4 &#9829;</span>
+            </h2>
+            <button class="popup__btn" type="submit" @click="hidePopup()">Đóng</button>
           </div>
         </div>
-      </div>
-      <div class="controls">
-        <button v-if="!isFighting" @click="userAttack">Attack</button>
-      </div>
-
+      </transition>
       <!-- Nhân vật -->
-      <div class="character-box">
-        <h2 class="character-box__title">
-          Chọn Nhân Vật
-        </h2>
-        <div class="character-box__item">
-          <h4>
-            Name
-            <span> thuộc tính</span>
-            <span>Dame</span>
-          </h4>
-          <img src="./image/user2.gif" alt="user_2">
-        </div>
-      </div>
+
       <!-- Nhân vật -->
 
       <!-- Quái vật -->
