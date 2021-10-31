@@ -4,8 +4,11 @@ const app = Vue.createApp({
       userHeart: 100,
       monsterHeart: 100,
       userDamage: 20,
-      monsterDamage: 15,
-      isFighting: false
+      monsterDamage: 90,
+      isFighting: false,
+      isShowPopup: true,
+      health: 10,
+      countHealth: 0,
     };
   },
   methods: {
@@ -19,8 +22,35 @@ const app = Vue.createApp({
     monsterAttack() {
       this.userHeart -= this.monsterDamage
       this.isFighting = false
+    },
+    hidePopup() {
+      this.isShowPopup = !this.isShowPopup;
+    }, 
+    addHealth() {
+      if(this.userHeart >= 80 || this.countHealth == 2) {}
+      else {
+        this.userHeart += this.health;
+        this.countHealth += 1; 
+      }
+    },
+    checkUserHeart() {
+      if(this.userHeart >= 80) {
+        alert("Bạn không thể hồi máu khi máu còn trên 80%");
+      }
     }
-  }
+  },
+  computed: {
+    
+  },
+  watch: {
+    userHeart() {
+     if(this.userHeart < 20) {
+      setTimeout(function() {
+        alert("HP của bạn đang dưới 20%, cần bổ sung HP");
+      }, 500)
+     }      
+    }
+  },
 });
 
 app.mount('#app');
