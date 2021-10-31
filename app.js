@@ -44,7 +44,7 @@ const app = Vue.createApp({
   },
   watch: {
     userHeart() {
-     if(this.userHeart < 20) {
+     if(this.userHeart <= 10) {
       setTimeout(function() {
         alert("HP của bạn đang dưới 20%, cần bổ sung HP");
       }, 500)
