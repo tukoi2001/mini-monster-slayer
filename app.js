@@ -175,7 +175,7 @@ const app = Vue.createApp({
         alert("HP của bạn đang dưới 10%, cần bổ sung HP");
       }, 500)
      }      
-    }
+    },
   },
 });
 
