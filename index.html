@@ -1,4 +1,4 @@
-git checkout -b sy-dung origin/sy-dung<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -20,9 +20,9 @@ git checkout -b sy-dung origin/sy-dung<!DOCTYPE html>
     <div id="app">
         <div class="nav p-2 d-flex justify-content-around align-items-center">
             <ul class="nav-bar list-unstyled">
-                <li class="nav-para">Nhân vật</li>
-                <li class="nav-para">Quái vật</li>
-                <li class="nav-para">Độ khó</li>
+                <li class="nav-para" @click="isShowCharacter = true">Nhân vật</li>
+                <li class="nav-para" v-on:click="showMonsters()">Quái vật</li>
+                <li class="nav-para" v-on:click="isShowDifficulty = true">Độ khó</li>
                 <li class="nav-para">Luật chơi</li>
             </ul>
         </div>
@@ -31,12 +31,12 @@ git checkout -b sy-dung origin/sy-dung<!DOCTYPE html>
         </div>
         <div class="container">
             <div class="item" id="user">
-                <p class="item__title text-uppercase">User</p>
+                <p class="item__title text-uppercase">{{ characterSelect.name }}</p>
                 <div class="heart-wrap">
                     <div :style="{width: userHeart + '%'}" class="heart"></div>
                 </div>
                 <div class="character">
-                    <img class="character__img" src="./image/user2.gif" alt="" />
+                    <img class="character__img" :src="characterSelect.srcImg" :alt="characterSelect.altImg"/>
                 </div>
                 <div class="skill-box" v-if="!isFighting">
                     <img src="./image/skill1.png" class="skill-box__img" alt="skill1" @click="userAttack">
@@ -46,12 +46,12 @@ git checkout -b sy-dung origin/sy-dung<!DOCTYPE html>
                 </div>
             </div>
             <div class="item" id="monster">
-                <p class="item__title text-uppercase">Monster</p>
+                <p class="item__title text-uppercase">{{ monsterSelect.name }}</p>
                 <div class="heart-wrap">
                     <div :style="{width: monsterHeart + '%'}" class="heart"></div>
                 </div>
                 <div class="character">
-                    <img id="dragon" class="character__img" src="./image/dragon-icegif.gif" alt="">
+                    <img id="dragon" class="character__img" :src="monsterSelect.srcImg" :alt="monsterSelect.altImg">
                 </div>
             </div>
         </div>
@@ -60,119 +60,49 @@ git checkout -b sy-dung origin/sy-dung<!DOCTYPE html>
         </div>
 
         <!-- Quái vật -->
-        <div class="box-monster">
+        <div class="box-monster" v-if="isShowMonster">
             <div class="monster-title position-relative">
                 <img src="./image/title.png" alt="" />
-                <a href="#" class="position-absolute">Quay lại</a>
+                <a href="#" class="position-absolute" @click.preventDefault="hideMonster()">Quay lại</a>
             </div>
             <div class="mons-box">
-                <div class="mons-box__item col-3">
-                    <h4>MONSTER-1</h4>
-                    <img src="./image/dragon-icegif.gif" alt="user_2" />
-                </div>
-                <div class="mons-box__item col-3">
-                    <h4>MONSTER-2</h4>
-                    <img src="./image/dragon_2.gif" alt="user_2" />
-                </div>
-                <div class="mons-box__item col-3">
-                    <h4>MONSTER-3</h4>
-                    <img src="./image/dragon-3.gif" alt="user_2" />
-                </div>
-                <div class="mons-box__item col-3">
-                    <h4>MONSTER-4</h4>
-                    <img src="./image/dragon-4.gif" alt="user_2" />
-                </div>
-                <div class="mons-box__item col-3">
-                    <h4>MONSTER-5</h4>
-                    <img src="./image/dragon-5.gif" alt="user_2" />
-                </div>
-                <div class="mons-box__item col-3">
-                    <h4>MONSTER-6</h4>
-                    <img src="./image/dragon-6.gif" alt="user_2" />
-                </div>
-                <div class="mons-box__item col-3">
-                    <h4>MONSTER-7</h4>
-                    <img src="./image/dragon-7.gif" alt="user_2" />
-                </div>
-                <div class="mons-box__item col-3">
-                    <h4>MONSTER-8</h4>
-                    <img src="./image/dragon-8.gif" alt="user_2" />
+                <div class="mons-box__item col-3" v-for="(monster, index) in listMonsters" 
+                :key="index" @click="handleMonster(index)">
+                    <h4>{{ monster.name }}</h4>
+                    <img :src="monster.srcImg" :alt="monster.altImg" />
                 </div>
             </div>
         </div>
-        <!-- <div class="controls">
-        <button >Attack</button>
-      </div> -->
+
+         <!-- Quái vật-->
+
         <!-- Popup -->
         <transition name="fade">
             <div class="popup" v-if="isShowPopup">
                 <div class="popup__content">
                     <h2 class="popup__title">
                         Chào mừng các bạn đến với trò chơi đối kháng Monster Slayer!
-                        <span>Make by Nhóm 4 &#9829;</span>
+                        <span class="popup__span">Make by Nhóm 4 &#9829;</span>
                     </h2>
                     <button class="popup__btn" type="submit" @click="hidePopup()">Đóng</button>
                 </div>
             </div>
         </transition>
         <!-- Nhân vật -->
-        <div class="character-box">
-            <h2 class="character-box__title">
-              Chọn Nhân Vật
-            </h2>
-            <div class="character-box__list">
-                <h4>____________</h4>
-                <h4>Tên</h4>
-                <span> Thuộc tính</span>
-                <span>Giới thiệu</span>
-                
+
+        <div class="box-character" v-if="isShowCharacter">
+            <div class="monster-title position-relative">
+                <h2 class="monster__title text-uppercase pb-3">Chọn nhân vật</h2>
+                <a href="#" class="position-absolute" @click="isShowCharacter = false">Quay lại</a>
             </div>
-            <ul>
-              <li class="character-box__item">
-                <img src="./image/User/erhardt-octopath.gif" alt="user_2">
-                <h4>Erhadt</h4>
-                <span> Quang</span>
-                <p>Kiếm sĩ từ đại lục Luminon     </p></li>
-    
-              <li class="character-box__item">
-                <img src="./image/User/giac_dau_si.gif" alt="user_2">
-                <h4>ShovelKnight</h4>
-                <span> Lôi</span>
-                <p> Hiệp sĩ đi ra từ hầm ngục tăm tối    </p></li>
-    
-              <li class="character-box__item">
-                <img src="./image/User/hiep_si.gif" alt="user_2">
-                <h4>Arthur</h4>
-                <span> Vật lí</span>
-                <p>Hiêp sĩ dòng đền đại diện cho hiêp hội   </p></li>
-        
-              <li class="character-box__item">
-                <img src="./image/User/honda_sumo.gif" alt="user_2">
-                <h4>Honda</h4>
-                <span>Vật lí</span></span>
-                <p>Võ sĩ Sumo từ Wano     </p></li>
-          
-              <li class="character-box__item">
-                <img src="./image/User/rochyn_idle.gif" alt="user_2">
-                <h4>Rochyn</h4>
-                <span> Băng</span>
-                <p> Pháp sư từ tháp lâm       </p></li>
-            
-              <li class="character-box__item">
-                <img src="./image/User/sorcerer.gif" alt="user_2">
-                <h4>Alex</h4>
-                <span> Hắc ám </span>
-                <p> Vu sư từ rừng Hắc ám     </p></li>
-    
-              <li class="character-box__item">
-                <img src="./image/User/Usfiv_hakan.gif" alt="user_2">
-                <h4>Hakan</h4>
-                <span>Hắc ám</span>
-                <p>Cuồng chiến sĩ đến từ Abyss     </p></li>
-                                             
-            </ul>
-             
-          </div>
+            <div class="mons-box">
+                <div class="mons-box__item col-3" v-for="(character, index) in listCharacters" 
+                :key="index" @click="handleCharacter(index)">
+                    <h4>{{ character.name }}</h4>
+                    <img :src="character.srcImg" :alt="character.altImg" />
+                </div>
+            </div>
+        </div>
 
 
         <!-- Nhân vật -->
@@ -180,25 +110,27 @@ git checkout -b sy-dung origin/sy-dung<!DOCTYPE html>
         <!-- Quái vật -->
 
         <!-- Độ khó -->
-        <div class="level">
+        <div class="level" v-if="isShowDifficulty">
             <div class="level__container ">
                 <div class="level__content">
                     <div class="level__close">
-                        <i class="fas fa-times"></i>
+                        <i class="fas fa-times" @click="isShowDifficulty = false"></i>
                     </div>
                     <div class="level__title">
                         <h2>LEVEL</h2>
                     </div>
                     <ul>
-                        <li><a href="">Dễ</a></li>
-                        <li><a href="">Trung Bình</a></li>
-                        <li><a href="">Khó</a></li>
+                        <li v-for="(level, index) in levels" :key="index">
+                        <a @click.preventDefault="handleDifficulty(index)" href="#">{{ level.key }}</a>
+                        </li>
                     </ul>
                 </div>
             </div>
         </div>
         <!-- Độ khó -->
-
+        <div class="difficul">
+            <h2 class="difficul__title">Độ khó: {{ difficulSelect.key }}</h2>
+        </div>
         <!-- Luật chơi -->
 
         <!-- Luật chơi -->
