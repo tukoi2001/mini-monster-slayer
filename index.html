@@ -25,6 +25,8 @@
                 <li class="nav-para" v-on:click="showMonsters()">Quái vật</li>
                 <li class="nav-para" @click="showDifficulty()">Độ khó</li>
                 <li class="nav-para" @click="showRules()">Luật chơi</li>
+                <li class="nav-para" v-on:click="isShowDifficulty = true">Độ khó</li>
+                <li class="nav-para">Luật chơi</li>
             </ul>
         </div>
         <div class="vs">
@@ -127,6 +129,8 @@
                     <ul>
                         <li v-for="(level, index) in levels" :key="index" @click.preventDefault="handleDifficulty(index)">
                         <a href="#">{{ level.key }}</a>
+                        <li v-for="(level, index) in levels" :key="index">
+                        <a @click.preventDefault="handleDifficulty(index)" href="#">{{ level.key }}</a>
                         </li>
                     </ul>
                 </div>
