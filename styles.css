@@ -193,6 +193,9 @@ section {
     text-align: center;
     flex-wrap: wrap;
 }
+.mons-box__item {
+    cursor: pointer;
+}
 
 .mons-box__item img {
     width: 315px;
@@ -321,7 +324,7 @@ section {
     background: rgba(0, 0, 0, 0.4);
     align-items: center;
     justify-content: center;
-    display: none;
+    display: flex;
 }
 
 .level__container {
@@ -371,7 +374,6 @@ section {
     color: #999;
     list-style: none;
     margin: 4px 0;
-    border-left: 2px solid #880a17;
     transition: 0.5s;
     cursor: pointer;
 }
@@ -434,7 +436,7 @@ section {
 /* level */
 /* Luật chơi */
 .rule-box {
-    cursor: pointer;
+    cursor: default;
     position: fixed;
     top: 0;
     right: 0;
@@ -447,7 +449,7 @@ section {
 }
 .rule__container {
     background: #fff;
-    width: 500px;
+    width: 1000px;
     max-width: calc(100% - 32px);
     min-width: 200px;
     position: relative;
@@ -469,19 +471,21 @@ section {
     top: 0;
     color: #fff;
     padding: 12px;
-    cursor: pointer;
     opacity: 0.8;
+}
+.rule__close i {
+    cursor: pointer;
 }
 .rule__close:hover {
     opacity: 1;
 }
 .rule__pragraph {
-    height: 200px;
+    height: 400px;
     overflow-y: scroll;
     padding: 10px;
 }
 ::-webkit-scrollbar {
-    width: 10px;
+    width: 5px;
     background-color: lightgray;
 }
 ::-webkit-scrollbar-thumb {
