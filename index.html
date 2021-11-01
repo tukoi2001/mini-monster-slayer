@@ -88,7 +88,7 @@
                 <div class="mons-box__item col-3" v-for="(monster, index) in listMonsters" 
                 :key="index" @click="handleMonster(index)">
                     <h4>{{ monster.name }}</h4>
-                    <img :src="monster.srcImg" :alt="monster.altImg" />
+                    <img :src="monster.srcImg" :alt="monster.altImg"/>
                 </div>
             </div>
         </div>
