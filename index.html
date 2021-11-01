@@ -8,33 +8,30 @@
       href="https://fonts.googleapis.com/css2?family=Jost:wght@400;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <header> 
+    <header>
       <h1>Monster Slayer</h1>
     </header>
-    
+
     <div id="app">
       <div class="nav p-2 d-flex justify-content-around align-items-center">
         <ul class="nav-bar list-unstyled">
-          <li class="nav-para ">
-            Nhân vật
-          </li>
-          <li class="nav-para">
-            Quái vật
-          </li>
-          <li class="nav-para">
-            Độ khó
-          </li>
-          <li class="nav-para">
-            Luật chơi
-          </li>
+          <li class="nav-para">Nhân vật</li>
+          <li class="nav-para">Quái vật</li>
+          <li class="nav-para">Độ khó</li>
+          <li class="nav-para">Luật chơi</li>
         </ul>
       </div>
       <div class="vs">
-        <img class="vs__img" src="./image/vs2.png" alt="">
+        <img class="vs__img" src="./image/vs2.png" alt="" />
       </div>
       <div class="container">
         <div class="item" id="user">
@@ -43,12 +40,12 @@
             <div :style="{width: userHeart + '%'}" class="heart"></div>
           </div>
           <div class="character">
-            <img class="character__img" src="./image/user2.gif" alt=""> 
+            <img class="character__img" src="./image/user2.gif" alt="" />
           </div>
           <div class="skill-box">
-            <img src="./image/skill1.png" class="skill-box__img" alt="skill1">
-            <img src="./image/skill2.png" class="skill-box__img" alt="skill2">
-            <img src="./image/YorickQ.png" class="skill-box__img" alt="skill3">
+            <img src="./image/skill1.png" class="skill-box__img" alt="skill1" />
+            <img src="./image/skill2.png" class="skill-box__img" alt="skill2" />
+            <img src="./image/YorickQ.png" class="skill-box__img" alt="skill3" />
           </div>
         </div>
         <div class="item" id="monster">
@@ -57,11 +54,9 @@
             <div :style="{width: monsterHeart + '%'}" class="heart"></div>
           </div>
           <div class="character">
-            <img id="dragon" class="character__img" src="./image/dragon-icegif.gif" alt=""> 
+            <img id="dragon" class="character__img" src="./image/dragon-icegif.gif" alt="" />
           </div>
-          <div class="skill-box">
-  
-          </div>
+          <div class="skill-box"></div>
         </div>
       </div>
       <div class="controls">
@@ -69,7 +64,7 @@
       </div>
 
       <!-- Nhân vật -->
-      <div class="character-box">
+      <!-- <div class="character-box">
         <h2 class="character-box__title">
           Chọn Nhân Vật
         </h2>
@@ -81,24 +76,57 @@
           </h4>
           <img src="./image/user2.gif" alt="user_2">
         </div>
-      </div>
+      </div> -->
       <!-- Nhân vật -->
 
       <!-- Quái vật -->
+      <div class="box-monster">
+        <div class="monster-title position-relative">
+          <img src="./image/title.png" alt="" />
+          <a href="#" class="position-absolute">Quay lại</a>
+        </div>
+        <div class="character-box">
+          <div class="character-box__item col-3">
+            <h4>MONSTER-1</h4>
+            <img src="./image/dragon-icegif.gif" alt="user_2" />
+          </div>
+          <div class="character-box__item col-3">
+            <h4>MONSTER-2</h4>
+            <img src="./image/dragon_2.gif" alt="user_2" />
+          </div>
+          <div class="character-box__item col-3">
+            <h4>MONSTER-3</h4>
+            <img src="./image/dragon-3.gif" alt="user_2" />
+          </div>
+          <div class="character-box__item col-3">
+            <h4>MONSTER-4</h4>
+            <img src="./image/dragon-4.gif" alt="user_2" />
+          </div>
+          <div class="character-box__item col-3">
+            <h4>MONSTER-5</h4>
+            <img src="./image/dragon-5.gif" alt="user_2" />
+          </div>
+          <div class="character-box__item col-3">
+            <h4>MONSTER-6</h4>
+            <img src="./image/dragon-6.gif" alt="user_2" />
+          </div>
+          <div class="character-box__item col-3">
+            <h4>MONSTER-7</h4>
+            <img src="./image/dragon-7.gif" alt="user_2" />
+          </div>
+          <div class="character-box__item col-3">
+            <h4>MONSTER-8</h4>
+            <img src="./image/dragon-8.gif" alt="user_2" />
+          </div>
+        </div>
+      </div>
+      <!-- Quái vật -->
 
+      <!-- Độ khó -->
 
-
-       <!-- Quái vật -->
-
-
-
-       <!-- Độ khó -->
-
-
-       <!-- Độ khó -->
+      <!-- Độ khó -->
 
       <!-- Luật chơi -->
-
 
       <!-- Luật chơi -->
     </div>
@@ -106,6 +134,5 @@
     <script src="app.js"></script>
   </body>
 </html>
-
 
 <!-- Phong -->
