@@ -213,20 +213,21 @@ section {
 }
 
 .monster-title a {
-    text-decoration: none;
-    color: #000;
-    background-color: #fff;
-    font-weight: bold;
-    border-radius: 50px;
-    text-transform: uppercase;
-    padding: 15px 25px;
+    transition: .3s;
     left: 50px;
     top: 50px;
-    transition: 0.5s;
+    padding: 10px 20px;
+    border-radius: 10px;
+    border: none;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-decoration: none;
+    background-color: #FFFFFF;
+    color:#000;
 }
-
 .monster-title a:hover {
-    box-shadow: 0px 2px 10px 5px rgb(216 213 213);
+    background-color: wheat;
+    transition: .3s;
 }
 .monster__title {
     font-size: 32px;
@@ -573,8 +574,8 @@ section {
     opacity: 0.8;
 }
 .skill-monster img {  
-width: 300px;
-height: 360px;
+    width: 300px;
+    height: 360px;
 }
 .skill-Q img{
     width: 235px;

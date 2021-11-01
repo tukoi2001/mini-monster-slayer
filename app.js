@@ -123,6 +123,17 @@ const app = Vue.createApp({
           key: "Khó",
         },
       ],
+      descriptionMonster: [
+        {
+          infor: "Rồng 1"
+        },
+        {
+          infor: "Rồng 2"
+        },
+        {
+          infor: "Rồng 3"
+        },
+      ],
       isShowMonster: false,
       isShowDifficulty: false,
       isShowRules: false,
@@ -261,13 +272,18 @@ const app = Vue.createApp({
       }, 1000);
     },
     checkEnteredName() {
-      if (this.userName == "") {
-        alert("Please enter your name!!!");
+      if (this.userName == '') {
+        alert('Vui lòng nhập tên của bạn!!!')
       }
     },
     hidePopup() {
       if (this.userName !== "") {
         this.isShowPopup = !this.isShowPopup;
+      }
+    },
+    showPopup() {
+      if (this.userName !== '') {
+        this.isShowPopup = !this.isShowPopup
       }
     },
     addHealth() {
