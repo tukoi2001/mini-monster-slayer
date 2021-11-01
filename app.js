@@ -1,6 +1,7 @@
 const app = Vue.createApp({
   data() {
     return {
+      userName: '',
       userHeart: 100,
       monsterHeart: 100,
       userDamage1: 1,
@@ -144,7 +145,6 @@ const app = Vue.createApp({
       this.isFighting = true;
       this.userDamage1 = Math.floor(Math.random() * 6) + 5;
       this.monsterHeart -= this.userDamage1;//this.monsterHeart = this.monsterHeart - this.userDamage
-      // console.log(this.userDamage1)
       setTimeout(() => {
         this.monsterAttack();
       }, 1500)
@@ -153,7 +153,6 @@ const app = Vue.createApp({
       this.isFighting = true;
       this.userDamage2 = Math.floor(Math.random() * 6) + 11;
       this.monsterHeart -= this.userDamage2 //this.monsterHeart = this.monsterHeart - this.userDamage
-      // console.log(this.userDamage2)
       setTimeout(() => {
         this.monsterAttack();
       }, 1500)
@@ -162,7 +161,6 @@ const app = Vue.createApp({
       this.isFighting = true;
       this.userDamage3 = Math.floor(Math.random() * 6) + 25;
       this.monsterHeart -= this.userDamage3 //this.monsterHeart = this.monsterHeart - this.userDamage
-      // console.log(this.userDamage3)
       setTimeout(() => {
         this.monsterAttack();
       }, 1500)
@@ -200,9 +198,17 @@ const app = Vue.createApp({
         this.isMonsterSkill = false;
       },1000)
     },
+    checkEnteredName() {
+      if (this.userName == '') {
+        alert('Please enter your name!!!')
+      }
+
+    },
     hidePopup() {
-      this.isShowPopup = !this.isShowPopup;
-    }, 
+      if (this.userName !== '') {
+        this.isShowPopup = !this.isShowPopup
+      }
+    },
     addHealth() {
       if(this.userHeart > 80 || this.countHealth == 2) {}
       else {
@@ -215,8 +221,21 @@ const app = Vue.createApp({
         alert("Bạn không thể hồi máu khi máu còn trên 80%");
       }
     },
+    showCharacter() {
+      if (this.userHeart < 100 || this.monsterHeart < 100) {
+        this.isShowCharacter = false;
+        alert("Trận đấu đang diễn ra...")
+      } else {
+        this.isShowCharacter = true;
+      }
+    },
     showMonsters() {
-      this.isShowMonster = true;
+      if (this.userHeart < 100 || this.monsterHeart < 100) {
+        this.isShowMonster = false;
+        alert("Trận đấu đang diễn ra...")
+      } else {
+        this.isShowMonster = true;
+      }
     },
     hideMonster() {
       this.isShowMonster = false;
@@ -230,7 +249,12 @@ const app = Vue.createApp({
       this.isShowCharacter = false;
     },
     showDifficulty() {
-      this.isShowDifficulty = true;
+      if (this.userHeart < 100 || this.monsterHeart < 100) {
+        this.isShowDifficulty = false;
+        alert("Trận đấu đang diễn ra...")
+      } else {
+        this.isShowDifficulty = true;
+      }
     },
     handleDifficulty(index) {
       this.selectedDifficulty = index;
@@ -239,7 +263,14 @@ const app = Vue.createApp({
     showRules() {
       this.isShowRules = true;
     },
-    hideRule() {
+    showBoxes() {
+      if (this.userHeart < 100 || this.monsterHeart < 100) {
+        this.isShowCharacter = false;
+        this.isShowDifficulty = false;
+        alert("Trận đấu đang diễn ra...")
+      }
+    },
+    hideRules() {
       this.isShowRules = false;
     },
     healthCheck() {
@@ -276,7 +307,7 @@ const app = Vue.createApp({
       setTimeout(() => {
         this.isW = false;
       }, 1000)
-    }
+    },
   },
   computed: {
     monsterSelect() {
@@ -298,7 +329,7 @@ const app = Vue.createApp({
       setTimeout(function() {
         alert("HP của bạn đang dưới 10%, cần bổ sung HP");
       }, 1100)
-     }
+     }      
     },
     selectedDifficulty() {
       if(this.selectedDifficulty == 0) {
