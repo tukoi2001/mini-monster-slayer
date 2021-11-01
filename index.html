@@ -42,9 +42,9 @@
                 </div>
                 <div class="skill-box" v-if="!isFighting">
                     <img :src="characterSelect.skillQ" class="skill-box__img" alt="skill1" @click="userAttack1(), qCheck()">
-                    <img :src="characterSelect.skillW" class="skill-box__img" alt="skill2" @click="wCheck(), userAttack2()">
-                    <img :src="characterSelect.skillR" class="skill-box__img" alt="skill3" @click="rCheck(), userAttack3()">
-                    <img src="./image/heal.png" class="skill-box__img" alt="skill4" @click="addHealth(), checkUserHeart(), healthCheck()">
+                    <img :src="characterSelect.skillW" class="skill-box__img" alt="skill2" @click="userAttack2()">
+                    <img :src="characterSelect.skillR" class="skill-box__img" alt="skill3" @click="userAttack3()">
+                    <img src="./image/heal.png" class="skill-box__img" alt="skill4" @click="addHealth(), checkUserHeart()">
                 </div>
 
                 <div class="skill-health" v-if="isHealth">
@@ -105,7 +105,7 @@
                     <input v-model="userName" class="d-block popup-start__input" @keyup.enter="hidePopup(), checkEnteredName()" placeholder="Nhập tên người chơi...">
                     <button class="popup-start__btn" @click=" checkEnteredName(), hidePopup()" >Play</button>
                     <div class="social-contacts">
-                        <a href="https://www.facebook.com/longrui.09"><i class="social-icon fab fa-facebook-square"></i></a>
+                        <a href="https://www.facebook.com/longrui.09" target="_blank"><i class="social-icon fab fa-facebook-square"></i></a>
                     </div>
                 </div>
             </div>
@@ -165,15 +165,34 @@
                         <h2>Luật chơi</h2>
                     </div>
                     <p class="rule__pragraph">
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.<br>
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.<br>
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.<br>
-                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.<br>
+                        Trò chơi có 3 cấp độ Dễ, Trung Bình và khó. Tương ứng với mỗi cấp độ, lượng sát thương sẽ khác nhau ở mỗi level.<br>
+                        Sau 3 lần tấn công thì quái vật sẽ được đánh 1 đòn chí mạng x2 sát thương. <br>
+                        - Dễ thì sát thương của quái vật: 5-8 dame. <br>
+                        - Tb: Sát thương của quái vật: 12-15 dame. <br>
+                        - Khó: Sát thương của quái vật giao động: 15-22 dame. <br> <br>
+
+                        Người chơi sẽ lựa chọn các vị tướng yêu thích và quái vật muốn đối đầu.<br>
+                        Người chơi sẽ có 4 kỹ năng: 3 kỹ năng chính và 1 kỹ năng hồi máu. <br>
+                        Mỗi lượt thi đấu người chơi được sử dụng phép bổ trợ hồi máu tối đa 2 lần/1 lượt. <br>
+                        Tỉ lệ dame của từng kỹ năng của người chơi là khác nhau.<br>
+                        Sau khi tấn công 2 lần skill 1 thì skill 2 mới có tác dụng.<br>
+                        Sau khi tấn công đủ 2 lần skill 2 mới được sử dụng skill cuối.<br>
                     </p>
                 </div>
             </div>
         </div>
         <!-- Luật chơi -->
+        <div class="box-result" v-if="isShowResult">
+            <img :src="resultSelect.srcImg" class="box-result__img" alt="resultSelect.altImg">
+        <ul class="result_button_list">
+            <li class="result_button" v-on:click="closeResult()"> 
+                Đóng
+            </li>
+            <li class="rerult_button" v-on:click="rePlay()"> 
+               Chơi lại
+            </li>
+        </ul>
+        </div>
     </div>
     <script src="https://unpkg.com/vue@next"></script>
     <script src="app.js"></script>

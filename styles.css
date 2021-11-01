@@ -516,14 +516,15 @@ section {
 }
 .rule__close i {
     cursor: pointer;
+    padding: 5px;
 }
 .rule__close:hover {
     opacity: 1;
 }
 .rule__pragraph {
-    height: 400px;
+    font-size: 1.2rem;
     overflow-y: scroll;
-    padding: 10px;
+    padding: 30px;
 }
 ::-webkit-scrollbar {
     width: 5px;
@@ -598,3 +599,31 @@ height: 360px;
     width: 1100px;
     height: 240px;
 }
+
+/* Kết quả */
+.box-result{
+    width: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+}
+.box-result .box-result__img{
+    height: auto;
+    width: 300px;
+}
+.box-result .result_button_list{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;        
+
+}
+.box-result .result_button_list .result_button{
+    background-color: #f00;
+    color: white;
+    width: 75px;
+    margin: 0 10px;
+}
+/* Kết qu
