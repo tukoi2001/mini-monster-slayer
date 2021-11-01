@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Fruktur&display=swap');
 * {
     box-sizing: border-box;
     margin: 0;
@@ -235,53 +236,97 @@ section {
 
 /* Nhân vật */
 
-.popup {
-    /* display: none; */
+/* Popup Start */
+.popup-start {
     position: fixed;
-    z-index: 99;
-    width: 100vw;
-    height: 100vh;
-    background-color: rgba(255, 255, 255, 0.4);
     top: 0;
+    right: 0;
+    bottom: 0;
     left: 0;
-    transition: all 0.5s;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    background-color: #161c22;
+    z-index: 99;
 }
-
-.popup__content {
-    width: 30%;
-    height: 280px;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: #880a17;
-    border-radius: 30px;
-    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.6);
-    border: 1px solid rgba(255, 255, 255, 0.8);
+.popup-start__box {
+    position: relative;
     text-align: center;
-    padding: 30px 20px;
 }
-
-.popup__title {
-    font-size: 28px;
-    color: #FFF;
+.popup-start__title {
+    font-family: 'Fruktur', cursive;
+    text-shadow: 3px 3px rgba(187, 5, 5, 0.295);
+    font-size: 78px;
+    color: #FFFFFF;
+    margin-bottom: 50px;
+    animation: zoomFaceOut ease 1s;
 }
-
-.popup__span {
-    display: block;
-    padding-top: 20px;
-}
-
-.popup__btn {
-    margin-top: 30px;
-    padding: 5px 15px;
-    font-size: 18px;
+.popup-start__input {
+    margin: 0 auto;
+    background-color: rgb(226, 226, 226);
     outline: none;
+    margin-bottom: 30px;
+    padding: 10px;
+    width: 60%;
+    border: none;
+    border-radius: 10px;
+    animation: modalBottomFaceIn ease 1s;
+}
+.popup-start__btn {
+    cursor: pointer;
+    padding: 10px 20px;
     border-radius: 10px;
     border: none;
-    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.6);
+    transition: .3s;
+    text-transform: uppercase;
+    font-weight: bold;
+    animation: modalBottomFaceIn ease 1s;
 }
-
+.popup-start__btn:focus {
+    outline: none!important;
+}
+.popup-start__btn:hover {
+    background-color: wheat;
+    transition: .3s;
+}
+.social-contacts {
+    position: fixed;
+    right: 30px;
+    bottom: 30px;
+    left: auto;
+    top: auto;
+    animation: modalBottomFaceIn ease 1s;
+}
+.social-icon {
+    font-size: 48px;
+    color: #FFFFFF;
+    transition: .3s;
+}
+.social-icon:hover {
+    color: wheat;
+    transition: .3s;
+}
+@keyframes zoomFaceOut {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+@keyframes modalBottomFaceIn {
+    from {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0%);
+        opacity: 1;
+    }
+}
+/* Popup Start */
 
 /* notify */
 
@@ -314,7 +359,7 @@ section {
 .fade-leave-to {
     opacity: 0;
 }
-
+/* transition */
 .level {
     position: fixed;
     top: 0;
@@ -403,10 +448,6 @@ section {
 
 .level__content ul li:hover::before {
     transform: scaleX(1);
-}
-
-.level__content ul li:hover {
-    left: 10px;
 }
 
 .level__content ul li:hover a {
