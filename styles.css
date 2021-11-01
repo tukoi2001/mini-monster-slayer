@@ -440,7 +440,7 @@ section {
 }
 .rule__container {
     background: #fff;
-    width: 500px;
+    width: 1000px;
     max-width: calc(100% - 32px);
     min-width: 200px;
     position: relative;
@@ -469,7 +469,7 @@ section {
     opacity: 1;
 }
 .rule__pragraph {
-    height: 200px;
+    height: 400px;
     overflow-y: scroll;
     padding: 10px;
 }
