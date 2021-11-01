@@ -164,7 +164,49 @@ section {
     border-radius: 50%;
     box-shadow: 10px 5px 15px rgb(255 255 255 / 50%);
     border: 2px solid #fff;
+    position: relative;
+    display: block;
 }
+.skill-boxq, .skill-boxw, .skill-boxr, .skill-healths {
+    position: relative;
+    z-index: 99;
+}
+.skill-boxq::before, .skill-boxw::before, .skill-boxr::before, .skill-healths::before {
+    content: "Q";
+    width: 46px;
+    height: 46px;
+    background-color: #fff;
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #000;
+    cursor: pointer;
+    transition: all 0.5s ease-in-out;
+}
+.skill-boxw::before {
+    content: "W";
+}
+.skill-boxr::before {
+    content: "R";
+}
+.skill-healths::before {
+    content: "F";
+}
+.skill-boxq:hover::before, .skill-boxw:hover::before,
+.skill-boxr:hover::before, .skill-healths:hover::before {
+    opacity: 0.6;
+}
+
+
 
 
 .box-monster, .box-character {
@@ -601,8 +643,11 @@ section {
     height: 240px;
 }
 
+
+
+
 /* Kết quả */
-.box-result{
+/* .box-result{
     width: auto;
     display: flex;
     flex-direction: column;
@@ -626,5 +671,5 @@ section {
     color: white;
     width: 75px;
     margin: 0 10px;
-}
+} */
 /* Kết qu

@@ -40,11 +40,24 @@
                 <div class="character">
                     <img class="character__img" :src="characterSelect.srcImg" :alt="characterSelect.altImg"/>
                 </div>
-                <div class="skill-box" v-if="!isFighting">
-                    <img :src="characterSelect.skillQ" class="skill-box__img" alt="skill1" @click="userAttack1(), qCheck()">
-                    <img :src="characterSelect.skillW" class="skill-box__img" alt="skill2" @click="userAttack2()">
-                    <img :src="characterSelect.skillR" class="skill-box__img" alt="skill3" @click="userAttack3()">
-                    <img src="./image/heal.png" class="skill-box__img" alt="skill4" @click="addHealth(), checkUserHeart()">
+                <div class="skill-box d-flex justify-content-center" v-if="!isFighting">
+
+                    <div class="skill-boxq">
+                        <img :src="characterSelect.skillQ" class="skill-box__img" alt="skill1" @click="userAttack1(), qCheck()">
+                    </div>
+                    
+                    <div class="skill-boxw">
+                        <img :src="characterSelect.skillW" class="skill-box__img" alt="skill2" @click="userAttack2()">
+                    </div>
+                    
+                    <div class="skill-boxr">
+                        <img :src="characterSelect.skillR" class="skill-box__img" alt="skill3" @click="userAttack3()">
+                    </div>
+                   
+                    <div class="skill-healths">
+                        <img src="./image/heal.png" class="skill-box__img" alt="skill4" @click="addHealth(), checkUserHeart()">
+                    </div>
+                    
                 </div>
 
                 <div class="skill-health" v-if="isHealth">
