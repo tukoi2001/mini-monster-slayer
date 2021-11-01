@@ -420,25 +420,25 @@ const app = Vue.createApp({
         this.isW = false;
       }, 1000);
     },
-    handleResult(index) {
-      this.selectedResult = index;
-      this.isShowResult = true;
-    },
-    closeResult() {
-      this.isShowResult = false;
-    },
-    rePlay() {
-      this.isShowResult = false;
-      this.userHeart = 100;
-      this.monsterHeart = 100;
-      this.userDamage1 = 1;
-      this.userDamage2 = 1;
-      this.userDamage3 = 1;
-      this.monsterDamage = 1;
-      this.health = 10;
-      this.countHealth = 0;
-      this.countSkillHealth = 0;
-    },
+    // handleResult(index) {
+    //   this.selectedResult = index;
+    //   this.isShowResult = true;
+    // },
+    // closeResult() {
+    //   this.isShowResult = false;
+    // },
+    // rePlay() {
+    //   this.isShowResult = false;
+    //   this.userHeart = 100;
+    //   this.monsterHeart = 100;
+    //   this.userDamage1 = 1;
+    //   this.userDamage2 = 1;
+    //   this.userDamage3 = 1;
+    //   this.monsterDamage = 1;
+    //   this.health = 10;
+    //   this.countHealth = 0;
+    //   this.countSkillHealth = 0;
+    // },
   },
   computed: {
     monsterSelect() {
@@ -453,10 +453,10 @@ const app = Vue.createApp({
       let index = this.selectedDifficulty;
       return this.levels[index];
     },
-    resultSelect() {
-      let index = this.selectedResult;
-      return this.result[index];
-    },
+    // resultSelect() {
+    //   let index = this.selectedResult;
+    //   return this.result[index];
+    // },
   },
   watch: {
     selectedDifficulty() {
