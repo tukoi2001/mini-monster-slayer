@@ -21,11 +21,11 @@
     <div id="app">
         <div class="nav p-2 d-flex justify-content-around align-items-center">
             <ul class="nav-bar list-unstyled">
+                <li class="nav-para" @click="showPopup()">Đổi tên</li>
                 <li class="nav-para" @click="showCharacter()">Nhân vật</li>
                 <li class="nav-para" @click="showMonsters()">Quái vật</li>
                 <li class="nav-para" @click="showDifficulty()">Độ khó</li>
                 <li class="nav-para" @click="showRules()">Luật chơi</li>
-
             </ul>
         </div>
         <div class="vs">
@@ -70,7 +70,7 @@
                     <img src="./image/hieuung1.gif" alt="Q">
                 </div>
                 <div class="skill-R" v-if="isR">
-                    <img src="./image/hieuung5.gif" alt="Q">
+                    <img src="./image/hieuung5.gif" alt="R">
                 </div>
             </div>
         </div>
@@ -85,7 +85,7 @@
                 <a href="#" class="position-absolute" @click.preventDefault="hideMonster()">Quay lại</a>
             </div>
             <div class="mons-box">
-                <div class="mons-box__item col-3" v-for="(monster, index) in listMonsters" 
+                <div class="mons-box__item col-3" data-toggle="tooltip" data-placement="bottom" :title="" v-for="(monster, index) in listMonsters" 
                 :key="index" @click="handleMonster(index)">
                     <h4>{{ monster.name }}</h4>
                     <img :src="monster.srcImg" :alt="monster.altImg" />
@@ -103,7 +103,7 @@
                         Monster Slayer
                     </h1>
                     <input v-model="userName" class="d-block popup-start__input" @keyup.enter="hidePopup(), checkEnteredName()" placeholder="Nhập tên người chơi...">
-                    <button class="popup-start__btn" @click=" checkEnteredName(), hidePopup()" >Play</button>
+                    <button class="popup-start__btn" @click=" checkEnteredName(), hidePopup()" >Chơi ngay</button>
                     <div class="social-contacts">
                         <a href="https://www.facebook.com/longrui.09"><i class="social-icon fab fa-facebook-square"></i></a>
                     </div>
