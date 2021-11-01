@@ -22,8 +22,7 @@ header {
     /* margin-bottom: 2rem; */
 }
 
-header h1,
-p {
+header h1, p, h2 {
     margin: 0;
 }
 
@@ -70,14 +69,13 @@ section {
 .container {
     display: flex;
     justify-content: space-around;
-    margin-bottom: 50px;
     max-width: 100% !important;
 }
 
 .item {
     width: 500px;
     text-align: center;
-    padding-top: 200px;
+    padding-top: 100px;
 }
 
 .item__title {
@@ -100,7 +98,6 @@ section {
     height: 25px;
     background: linear-gradient( 90deg, rgba(193, 0, 0, 1) 0%, rgba(233, 137, 2, 1) 53%, rgba(0, 255, 63, 1) 100%);
 }
-
 .controls {
     display: flex;
     justify-content: center;
@@ -169,15 +166,13 @@ section {
 }
 
 
-/* Nhân vật */
-
-.box-monster {
-    display: none;
+.box-monster, .box-character {
+    /* display: none; */
     position: fixed;
     z-index: 99;
     top: 0;
     width: 100%;
-    height: 100%;
+    height: 100vh;
     background-image: url(./image/back.jpg);
     background-repeat: no-repeat;
     background-size: cover;
@@ -198,10 +193,13 @@ section {
     text-align: center;
     flex-wrap: wrap;
 }
+.mons-box__item {
+    cursor: pointer;
+}
 
 .mons-box__item img {
-    width: 100%;
-    height: 350px;
+    width: 315px;
+    height: 235px;
 }
 
 .monster-title {
@@ -229,7 +227,11 @@ section {
 .monster-title a:hover {
     box-shadow: 0px 2px 10px 5px rgb(216 213 213);
 }
-
+.monster__title {
+    font-size: 32px;
+    color: #FFF;
+    font-weight: bold;
+}
 
 /* Nhân vật */
 
@@ -265,7 +267,7 @@ section {
     color: #FFF;
 }
 
-.popup__title span {
+.popup__span {
     display: block;
     padding-top: 20px;
 }
@@ -322,7 +324,7 @@ section {
     background: rgba(0, 0, 0, 0.4);
     align-items: center;
     justify-content: center;
-    display: none;
+    display: flex;
 }
 
 .level__container {
@@ -372,7 +374,6 @@ section {
     color: #999;
     list-style: none;
     margin: 4px 0;
-    border-left: 2px solid #880a17;
     transition: 0.5s;
     cursor: pointer;
 }
@@ -411,7 +412,15 @@ section {
 .level__content ul li:hover a {
     color: #fff;
 }
-
+.difficul {
+    position: absolute;
+    top: 20px;
+    left: auto;
+    right: 30px;
+}
+.difficul__title {
+    color: #FFF;
+}
 @keyframes modalFaceIn {
     from {
         transform: translateY(-100%);
@@ -427,7 +436,7 @@ section {
 /* level */
 /* Luật chơi */
 .rule-box {
-    cursor: pointer;
+    cursor: default;
     position: fixed;
     top: 0;
     right: 0;
@@ -462,8 +471,10 @@ section {
     top: 0;
     color: #fff;
     padding: 12px;
-    cursor: pointer;
     opacity: 0.8;
+}
+.rule__close i {
+    cursor: pointer;
 }
 .rule__close:hover {
     opacity: 1;
@@ -474,7 +485,7 @@ section {
     padding: 10px;
 }
 ::-webkit-scrollbar {
-    width: 10px;
+    width: 5px;
     background-color: lightgray;
 }
 ::-webkit-scrollbar-thumb {
