@@ -42,20 +42,20 @@
                 </div>
                 <div class="skill-box d-flex justify-content-center" v-if="!isFighting">
 
-                    <div class="skill-boxq">
-                        <img :src="characterSelect.skillQ" class="skill-box__img" alt="skill1" @click="userAttack1(), qCheck()">
+                    <div class="skill-boxq" @click="userAttack1(), qCheck()">
+                        <img :src="characterSelect.skillQ" class="skill-box__img" alt="skill1">
                     </div>
                     
-                    <div class="skill-boxw">
-                        <img :src="characterSelect.skillW" class="skill-box__img" alt="skill2" @click="userAttack2()">
+                    <div class="skill-boxw"  @click="userAttack2()">
+                        <img :src="characterSelect.skillW" class="skill-box__img" alt="skill2">
                     </div>
                     
-                    <div class="skill-boxr">
-                        <img :src="characterSelect.skillR" class="skill-box__img" alt="skill3" @click="userAttack3()">
+                    <div class="skill-boxr" @click="userAttack3()">
+                        <img :src="characterSelect.skillR" class="skill-box__img" alt="skill3" >
                     </div>
                    
-                    <div class="skill-healths">
-                        <img src="./image/heal.png" class="skill-box__img" alt="skill4" @click="addHealth(), checkUserHeart()">
+                    <div class="skill-healths" @click="addHealth(), checkUserHeart()">
+                        <img src="./image/heal.png" class="skill-box__img" alt="skill4">
                     </div>
                     
                 </div>
