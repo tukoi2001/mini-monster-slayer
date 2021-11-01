@@ -33,7 +33,7 @@
         </div>
         <div class="container">
             <div class="item" id="user">
-                <p class="item__title text-uppercase">{{ characterSelect.name }}</p>
+                <p class="item__title text-uppercase">{{ userName }}</p>
                 <div class="heart-wrap">
                     <div :style="{width: userHeart + '%'}" class="heart"></div>
                 </div>
@@ -95,18 +95,22 @@
 
          <!-- Quái vật-->
 
-        <!-- Popup -->
-        <transition name="fade">
-            <div class="popup" v-if="isShowPopup">
-                <div class="popup__content">
-                    <h2 class="popup__title">
-                        Chào mừng các bạn đến với trò chơi đối kháng Monster Slayer!
-                        <span class="popup__span">Make by Nhóm 4 &#9829;</span>
-                    </h2>
-                    <button class="popup__btn" type="submit" @click="hidePopup()">Đóng</button>
+        <!-- Popup Start -->
+        <transition name="fade" v-if="isShowPopup">
+            <div class="popup-start">
+                <div class="popup-start__box">
+                    <h1 class="popup-start__title">
+                        Monster Slayer
+                    </h1>
+                    <input v-model="userName" class="d-block popup-start__input" placeholder="Nhập tên người chơi...">
+                    <button class="popup-start__btn" @click="hidePopup()">Play</button>
+                    <div class="social-contacts">
+                        <a href="https://www.facebook.com/longrui.09"><i class="social-icon fab fa-facebook-square"></i></a>
+                    </div>
                 </div>
             </div>
         </transition>
+        <!-- Popup Start -->
         <!-- Nhân vật -->
 
         <div class="box-character" v-if="isShowCharacter">
