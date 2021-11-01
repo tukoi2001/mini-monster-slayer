@@ -101,6 +101,7 @@ const app = Vue.createApp({
       ],
       isShowMonster: false,
       isShowDifficulty: false,
+      isShowRules: false,
       selectedMonster: 0,
       isShowCharacter: false,
       selectedCharacter: 0,
@@ -148,10 +149,19 @@ const app = Vue.createApp({
       this.selectedCharacter = index;
       this.isShowCharacter = false;
     },
+    showDifficulty() {
+      this.isShowDifficulty = true;
+    },
     handleDifficulty(index) {
       this.selectedDifficulty = index;
       this.isShowDifficulty = false;
       console.log(index);
+    },
+    showRules() {
+      this.isShowRules = true;
+    },
+    hideRule() {
+      this.isShowRules = false;
     }
   },
   computed: {
