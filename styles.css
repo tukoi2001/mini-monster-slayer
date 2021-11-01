@@ -132,6 +132,7 @@ section {
     margin: 0;
     border-radius: 10px;
     overflow: hidden;
+    margin-top: 20px;
 }
 
 .character__img {
@@ -142,10 +143,8 @@ section {
 
 #dragon {
     transform: scaleX(-1);
-    width: 400px;
-    height: auto;
-    margin-right: -100px;
-    margin-top: -40px;
+    width: 380px;
+    height: 350px;
 }
 
 
@@ -154,6 +153,7 @@ section {
 .skill-box {
     padding: 10px;
     margin: 0;
+    margin-top: 30px;
 }
 
 .skill-box__img {
@@ -534,3 +534,67 @@ section {
     border-radius: 2px;
 }
 /* Luật chơi */
+
+/* skill */
+#monster, #user {
+    position: relative;
+}
+.skill-Q {
+    position: absolute;
+    top: auto;
+    bottom: 80px;
+    left: 40%;
+    transform: translateX(-50%);
+    opacity: 0.8;
+}
+.skill-R {
+    position: absolute;
+    top: auto;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0.8;
+}
+.skill-health {
+    position: absolute;
+    top: auto;
+    bottom: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0.8;
+}
+.skill-monster {
+    position: absolute;
+    top: auto;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0.8;
+}
+.skill-monster img {  
+width: 300px;
+height: 360px;
+}
+.skill-Q img{
+    width: 235px;
+    height: 180px;
+}
+.skill-R img {
+    width: 320px;
+    height: 390px;
+}
+.skill-health img {
+    width: 300px;
+    height: 240px;
+}
+.skill-W {
+    position: absolute;
+    top: 58%;
+    transform: translateY(-50%);
+    left: 145px;
+    z-index: 99;
+}
+.skill-W img {
+    width: 1100px;
+    height: 240px;
+}
