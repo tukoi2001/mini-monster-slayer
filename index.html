@@ -139,7 +139,7 @@
                         <h2>LEVEL</h2>
                     </div>
                     <ul>
-                        <li v-for="(level, index) in levels" :key="index" @click="handleDifficulty(index)">
+                        <li v-for="(level, index) in levels" :key="index" @click="handleDifficulty(index), `handle${index}`">
                         <a href="#">{{ level.key }}</a>
                         </li>
                     </ul>

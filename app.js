@@ -135,6 +135,7 @@ const app = Vue.createApp({
       isMonsterSkill: false,
       isW: false,
       isR: false,
+      countMonsterAttacks: 0,
 
     };
   },
@@ -143,7 +144,7 @@ const app = Vue.createApp({
       this.isFighting = true;
       this.userDamage1 = Math.floor(Math.random() * 6) + 5;
       this.monsterHeart -= this.userDamage1;//this.monsterHeart = this.monsterHeart - this.userDamage
-      console.log(this.userDamage1)
+      // console.log(this.userDamage1)
       setTimeout(() => {
         this.monsterAttack();
       }, 1500)
@@ -152,7 +153,7 @@ const app = Vue.createApp({
       this.isFighting = true;
       this.userDamage2 = Math.floor(Math.random() * 6) + 11;
       this.monsterHeart -= this.userDamage2 //this.monsterHeart = this.monsterHeart - this.userDamage
-      console.log(this.userDamage2)
+      // console.log(this.userDamage2)
       setTimeout(() => {
         this.monsterAttack();
       }, 1500)
@@ -161,15 +162,33 @@ const app = Vue.createApp({
       this.isFighting = true;
       this.userDamage3 = Math.floor(Math.random() * 6) + 25;
       this.monsterHeart -= this.userDamage3 //this.monsterHeart = this.monsterHeart - this.userDamage
-      console.log(this.userDamage3)
+      // console.log(this.userDamage3)
       setTimeout(() => {
         this.monsterAttack();
       }, 1500)
     },
     monsterAttack() {
-      this.monsterDamage = Math.floor(Math.random() * 4) + 5;
-      console.log(this.monsterDamage)
-      this.userHeart -= this.monsterDamage
+      let n = this.countMonsterAttacks;
+      if (this.selectedDifficulty == 0) {
+        this.monsterDamage = Math.floor(Math.random() * 4) + 5;
+        if(n % 3 === 0 && this.countMonsterAttacks != 0) {
+          this.monsterDamage = (Math.floor(Math.random() * 4) + 5) * 2;
+        }
+      }
+      if (this.selectedDifficulty == 1) {
+        this.monsterDamage = Math.floor(Math.random() * 4) + 12;
+        if(n % 3 === 0 && this.countMonsterAttacks != 0) {
+          this.monsterDamage = (Math.floor(Math.random() * 4) + 12) *2;
+        }
+      }
+      if (this.selectedDifficulty == 2) {
+        this.monsterDamage = Math.floor(Math.random() * 8) + 15;
+        if(n % 3 === 0 && this.countMonsterAttacks != 0) {
+          this.monsterDamage = (Math.floor(Math.random() * 8) + 15) *2;
+        }
+      }
+      this.countMonsterAttacks += 1;
+      this.userHeart -= this.monsterDamage;
       setTimeout(() => {
         this.isFighting = false;
       }, 1200)
@@ -216,7 +235,6 @@ const app = Vue.createApp({
     handleDifficulty(index) {
       this.selectedDifficulty = index;
       this.isShowDifficulty = false;
-      console.log(index);
     },
     showRules() {
       this.isShowRules = true;
@@ -272,7 +290,7 @@ const app = Vue.createApp({
     difficulSelect() {
       let index = this.selectedDifficulty;
       return this.levels[index];
-    }
+    },
   },
   watch: {
     userHeart() {
@@ -280,8 +298,25 @@ const app = Vue.createApp({
       setTimeout(function() {
         alert("HP của bạn đang dưới 10%, cần bổ sung HP");
       }, 1100)
-     }      
+     }
     },
+    selectedDifficulty() {
+      if(this.selectedDifficulty == 0) {
+        setTimeout(() => {
+          alert("Độ khó hiện tại: Dễ");
+        }, 500)
+      }
+      if (this.selectedDifficulty == 1) {
+        setTimeout(() => {
+          alert("Độ khó hiện tại: Trung Bình");
+        }, 500)
+      }
+      if (this.selectedDifficulty == 2) {
+        setTimeout(() => {
+          alert("Độ khó hiện tại: Khó");
+        }, 500)
+      }
+    }
   },
 });
 
