@@ -25,8 +25,7 @@
                 <li class="nav-para" v-on:click="showMonsters()">Quái vật</li>
                 <li class="nav-para" @click="showDifficulty()">Độ khó</li>
                 <li class="nav-para" @click="showRules()">Luật chơi</li>
-                <li class="nav-para" v-on:click="isShowDifficulty = true">Độ khó</li>
-                <li class="nav-para">Luật chơi</li>
+
             </ul>
         </div>
         <div class="vs">
@@ -42,11 +41,22 @@
                     <img class="character__img" :src="characterSelect.srcImg" :alt="characterSelect.altImg"/>
                 </div>
                 <div class="skill-box" v-if="!isFighting">
-                    <img src="./image/skill1.png" class="skill-box__img" alt="skill1" @click="userAttack">
-                    <img src="./image/skill2.png" class="skill-box__img" alt="skill2">
-                    <img src="./image/YorickQ.png" class="skill-box__img" alt="skill3">
-                    <img src="./image/heal.png" class="skill-box__img" alt="skill4" @click="addHealth(), checkUserHeart()">
+                    <img :src="characterSelect.skillQ" class="skill-box__img" alt="skill1" @click="userAttack1(), qCheck()">
+                    <img :src="characterSelect.skillW" class="skill-box__img" alt="skill2" @click="wCheck(), userAttack2()">
+                    <img :src="characterSelect.skillR" class="skill-box__img" alt="skill3" @click="rCheck(), userAttack3()">
+                    <img src="./image/heal.png" class="skill-box__img" alt="skill4" @click="addHealth(), checkUserHeart(), healthCheck()">
                 </div>
+
+                <div class="skill-health" v-if="isHealth">
+                    <img src="./image/hoimau.gif" alt="hoi-mau">
+                </div>
+                <div class="skill-W" v-if="isW">
+                    <img src="./image/hieuung3.gif" alt="Q">
+                </div>
+                <div class="skill-monster" v-if="isMonsterSkill">
+                    <img src="./image/hieuung4.gif" alt="skill-monster">
+                </div>
+
             </div>
             <div class="item" id="monster">
                 <p class="item__title text-uppercase">{{ monsterSelect.name }}</p>
@@ -55,6 +65,12 @@
                 </div>
                 <div class="character">
                     <img id="dragon" class="character__img" :src="monsterSelect.srcImg" :alt="monsterSelect.altImg">
+                </div>
+                <div class="skill-Q" v-if="isQ">
+                    <img src="./image/hieuung1.gif" alt="Q">
+                </div>
+                <div class="skill-R" v-if="isR">
+                    <img src="./image/hieuung5.gif" alt="Q">
                 </div>
             </div>
         </div>
@@ -123,10 +139,8 @@
                         <h2>LEVEL</h2>
                     </div>
                     <ul>
-                        <li v-for="(level, index) in levels" :key="index" @click.preventDefault="handleDifficulty(index)">
+                        <li v-for="(level, index) in levels" :key="index" @click="handleDifficulty(index)">
                         <a href="#">{{ level.key }}</a>
-                        <li v-for="(level, index) in levels" :key="index">
-                        <a @click.preventDefault="handleDifficulty(index)" href="#">{{ level.key }}</a>
                         </li>
                     </ul>
                 </div>

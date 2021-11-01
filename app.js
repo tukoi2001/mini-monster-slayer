@@ -3,50 +3,53 @@ const app = Vue.createApp({
     return {
       userHeart: 100,
       monsterHeart: 100,
-      userDamage: 20,
-      monsterDamage: 90,
+      userDamage1: 1,
+      userDamage2: 1,
+      userDamage3: 1,
+      monsterDamage: 1,
       isFighting: false,
       isShowPopup: true,
       health: 10,
       countHealth: 0,
+      countSkillHealth: 0,
       listMonsters: [
         {
-          name: "MONSTER-1",
+          name: "Ghidorah",
           srcImg: "./image/dragon-icegif.gif",
           altImg: "monster_1"
         },
         {
-          name: "MONSTER-2",
+          name: "Druk",
           srcImg: "./image/dragon_2.gif",
           altImg: "monster_2"
         },
         {
-          name: "MONSTER-3",
+          name: "Slathborg",
           srcImg: "./image/dragon-3.gif",
           altImg: "monster_3"
         },
         {
-          name: "MONSTER-4",
+          name: "Stoor Worm",
           srcImg: "./image/dragon-4.gif",
           altImg: "monster_4"
         },
         {
-          name: "MONSTER-5",
+          name: "Temeraire",
           srcImg: "./image/dragon-5.gif",
           altImg: "monster_5"
         },
         {
-          name: "MONSTER-6",
+          name: "Viserion",
           srcImg: "./image/dragon-6.gif",
           altImg: "monster_6"
         },
         {
-          name: "MONSTER-7",
+          name: "Faranth",
           srcImg: "./image/dragon-7.gif",
           altImg: "monster_7"
         },
         {
-          name: "MONSTER-8",
+          name: "Drakon",
           srcImg: "./image/dragon-8.gif",
           altImg: "monster_8"
         }
@@ -55,37 +58,58 @@ const app = Vue.createApp({
         {
           name: "Erhadt",
           srcImg: "./image/User/erhardt-octopath.gif",
-          altImg: "user_1"
+          altImg: "user_1",
+          skillQ: "./image/User/erhardt-octopath/SkillQ.png",
+          skillW: "./image/User/erhardt-octopath/SkillW.png",
+          skillR: "./image/User/erhardt-octopath/SkillR.png",
         },
         {
           name: "ShovelKnight",
           srcImg: "./image/User/giac_dau_si.gif",
-          altImg: "user_2"
+          altImg: "user_2",
+          skillQ: "./image/User/giac_dau_si/SkillQ.png",
+          skillW: "./image/User/giac_dau_si/SkillW.png",
+          skillR: "./image/User/giac_dau_si/SkillR.png",
         },
         {
           name: "Arthur",
           srcImg: "./image/User/hiep_si.gif",
-          altImg: "user_3"
+          altImg: "user_3",
+          skillQ: "./image/User/hiep_si/SkillQ.png",
+          skillW: "./image/User/hiep_si/SkillW.png",
+          skillR: "./image/User/hiep_si/SkillR.png",
         },
         {
           name: "Honda",
           srcImg: "./image/User/honda_sumo.gif",
-          altImg: "user_4"
+          altImg: "user_4",
+          skillQ: "./image/User/honda_sumo/SkillQ.png",
+          skillW: "./image/User/honda_sumo/SkillW.png",
+          skillR: "./image/User/honda_sumo/SkillR.png",
         },
         {
           name: "Rochyn",
           srcImg: "./image/User/rochyn_idle.gif",
-          altImg: "user_5"
+          altImg: "user_5",
+          skillQ: "./image/User/rochyn_idle/SkillQ.png",
+          skillW: "./image/User/rochyn_idle/SkillW.png",
+          skillR: "./image/User/rochyn_idle/SkillR.png",
         },
         {
           name: "Alex",
           srcImg: "./image/User/sorcerer.gif",
-          altImg: "user_6"
+          altImg: "user_6",
+          skillQ: "./image/User/sorcerer/SkillQ.png",
+          skillW: "./image/User/sorcerer/SkillR.png",
+          skillR: "./image/User/sorcerer/SkillW.png",
         },
         {
           name: "Hakan",
           srcImg: "./image/User/Usfiv_hakan.gif",
-          altImg: "user_7"
+          altImg: "user_7",
+          skillQ: "./image/User/Usfiv_hakan/SkillQ.png",
+          skillW: "./image/User/Usfiv_hakan/SkillW.png",
+          skillR: "./image/User/Usfiv_hakan/SkillR.png",
         },
       ],
       levels: [
@@ -106,32 +130,69 @@ const app = Vue.createApp({
       isShowCharacter: false,
       selectedCharacter: 0,
       selectedDifficulty: 0,
+      isHealth: false,
+      isQ: false,
+      isMonsterSkill: false,
+      isW: false,
+      isR: false,
+
     };
   },
   methods: {
-    userAttack() {
-      this.isFighting = true
-      this.monsterHeart -= this.userDamage //this.monsterHeart = this.monsterHeart - this.userDamage
+    userAttack1() {
+      this.isFighting = true;
+      this.userDamage1 = Math.floor(Math.random() * 6) + 5;
+      this.monsterHeart -= this.userDamage1;//this.monsterHeart = this.monsterHeart - this.userDamage
+      console.log(this.userDamage1)
       setTimeout(() => {
         this.monsterAttack();
-      }, 2000)
+      }, 1500)
+    },
+    userAttack2() {
+      this.isFighting = true;
+      this.userDamage2 = Math.floor(Math.random() * 6) + 11;
+      this.monsterHeart -= this.userDamage2 //this.monsterHeart = this.monsterHeart - this.userDamage
+      console.log(this.userDamage2)
+      setTimeout(() => {
+        this.monsterAttack();
+      }, 1500)
+    },
+    userAttack3() {
+      this.isFighting = true;
+      this.userDamage3 = Math.floor(Math.random() * 6) + 25;
+      this.monsterHeart -= this.userDamage3 //this.monsterHeart = this.monsterHeart - this.userDamage
+      console.log(this.userDamage3)
+      setTimeout(() => {
+        this.monsterAttack();
+      }, 1500)
     },
     monsterAttack() {
+      this.monsterDamage = Math.floor(Math.random() * 4) + 5;
+      console.log(this.monsterDamage)
       this.userHeart -= this.monsterDamage
-      this.isFighting = false
+      setTimeout(() => {
+        this.isFighting = false;
+      }, 1200)
+      this.checkSkillMonster();
+    },
+    checkSkillMonster() {
+      this.isMonsterSkill = true;
+      setTimeout(() => {
+        this.isMonsterSkill = false;
+      },1000)
     },
     hidePopup() {
       this.isShowPopup = !this.isShowPopup;
     }, 
     addHealth() {
-      if(this.userHeart >= 80 || this.countHealth == 2) {}
+      if(this.userHeart > 80 || this.countHealth == 2) {}
       else {
         this.userHeart += this.health;
         this.countHealth += 1; 
       }
     },
     checkUserHeart() {
-      if(this.userHeart >= 80) {
+      if(this.userHeart > 80) {
         alert("Bạn không thể hồi máu khi máu còn trên 80%");
       }
     },
@@ -162,6 +223,41 @@ const app = Vue.createApp({
     },
     hideRule() {
       this.isShowRules = false;
+    },
+    healthCheck() {
+      if(this.userHeart > 80) {
+        this.isHealth = false;
+      }
+      else {
+        if (this.countSkillHealth > 1) {
+          this.isHealth = false;
+        }
+        else {
+          this.isHealth = true;
+          setTimeout(() => {
+            this.isHealth = false;
+          }, 1000);
+          this.countSkillHealth += 1;
+        }
+      }
+    },
+    qCheck() {
+      this.isQ = true;
+      setTimeout(() => {
+        this.isQ = false;
+      }, 1000)
+    },
+    rCheck() {
+      this.isR = true;
+      setTimeout(() => {
+        this.isR = false;
+      }, 1000)
+    },
+    wCheck() {
+      this.isW = true;
+      setTimeout(() => {
+        this.isW = false;
+      }, 1000)
     }
   },
   computed: {
@@ -183,7 +279,7 @@ const app = Vue.createApp({
      if(this.userHeart <= 10) {
       setTimeout(function() {
         alert("HP của bạn đang dưới 10%, cần bổ sung HP");
-      }, 500)
+      }, 1100)
      }      
     },
   },
