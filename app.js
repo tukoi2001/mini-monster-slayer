@@ -147,23 +147,17 @@ const app = Vue.createApp({
       isW: false,
       isR: false,
       countMonsterAttacks: 0,
-      isShowResult: false,
-      result: [
-        {
-          name: "Chiến thắng",
-          srcImg: "./image/winner.png",
-          altImg: "result1",
-        },
-        {
-          name: "Thua trận",
-          srcImg: "./image/defeat.png",
-          altImg: "result2",
-        },
-      ],
-      selectedResult: 0,
-
       countQ: 0,
       countW: 0,
+      soundQ: new Audio("./sound/skillQ.mp3"),
+      soundW: new Audio("./sound/skillW.mp3"),
+      soundR: new Audio("./sound/skillR.mp3"),
+      healEffect: new Audio("./sound/heal.mp3"),
+      soundVictory: new Audio("./sound/victory.mp3"),
+      soundDefeat: new Audio("./sound/defeat.mp3"),
+      soundMonster: new Audio("./sound/monsterSound.mp3"),
+      checkWin: false,
+      checkLose: false,
     };
   },
   methods: {
@@ -174,6 +168,7 @@ const app = Vue.createApp({
       this.isFighting = true;
       this.userDamage1 = Math.floor(Math.random() * 6) + 5;
       this.monsterHeart -= this.userDamage1; //this.monsterHeart = this.monsterHeart - this.userDamage
+      this.soundQ.play();
       // this.checkHealths();
       setTimeout(() => {
         this.monsterAttack();
@@ -193,6 +188,7 @@ const app = Vue.createApp({
         this.isFighting = true;
         this.userDamage2 = Math.floor(Math.random() * 6) + 11;
         this.monsterHeart -= this.userDamage2; //this.monsterHeart = this.monsterHeart - this.userDamage
+        this.soundW.play();
         // this.checkHealths();
         setTimeout(() => {
           this.monsterAttack();
@@ -214,6 +210,7 @@ const app = Vue.createApp({
         this.isFighting = true;
         this.userDamage3 = Math.floor(Math.random() * 6) + 25;
         this.monsterHeart -= this.userDamage3; //this.monsterHeart = this.monsterHeart - this.userDamage
+        this.soundR.play();
         // this.checkHealths();
         setTimeout(() => {
           this.monsterAttack();
@@ -228,6 +225,10 @@ const app = Vue.createApp({
       if (this.monsterHeart <= 0) {
         this.isMonsterSkill = false;
         this.monsterDamage = 0;
+        setTimeout(() => {
+          this.checkWin = true;
+          this.soundVictory.play();
+        }, 500);
       }
       else {
         let n = this.countMonsterAttacks;
@@ -255,11 +256,19 @@ const app = Vue.createApp({
           this.isFighting = false;
         }, 1200);
         this.checkSkillMonster();
+        this.soundMonster.play();
       }
+    },
+    reload() {
+      location.reload();
     },
     checkHealths() {
       if(this.userHeart <= 0) {
         this.userHeart = 0;
+        setTimeout(() => {
+          this.checkLose = true;
+          this.soundDefeat.play();
+        }, 800);
       }
       if (this.monsterHeart <= 0) {
         this.monsterHeart = 0;
@@ -328,6 +337,7 @@ const app = Vue.createApp({
             this.countSkillHealth += 1;
           }
         }
+        this.healEffect.play();
       }
     },
     checkUserHeart() {

@@ -282,15 +282,18 @@ section {
 /* Popup Start */
 .popup-start {
     position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    align-items: center;
-    justify-content: center;
-    display: flex;
-    background-color: #161c22;
-    z-index: 99;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      align-items: center;
+      justify-content: center;
+      display: flex;
+      background-image: url(./image/back-start.jpg);
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;
+      z-index: 99;
 }
 .popup-start__box {
     position: relative;
