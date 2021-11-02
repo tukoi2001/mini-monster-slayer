@@ -1,55 +1,55 @@
 const app = Vue.createApp({
   data() {
     return {
+      userName: "",
       userHeart: 100,
       monsterHeart: 100,
-      userDamage: 35,
-      monsterDamage: 30,
+      userDamage1: 1,
+      userDamage2: 1,
+      userDamage3: 1,
+      monsterDamage: 1,
       isFighting: false,
       isShowPopup: true,
-      isUntil: false,
-      attackEffect: false,
-      monsterAttackEffect: false,
-      health: 10,
       countHealth: 0,
+      countSkillHealth: 0,
       listMonsters: [
         {
-          name: "HYDRA",
+          name: "Ghidorah",
           srcImg: "./image/dragon-icegif.gif",
           altImg: "monster_1",
         },
         {
-          name: "Ghidorah",
+          name: "Druk",
           srcImg: "./image/dragon_2.gif",
           altImg: "monster_2",
         },
         {
-          name: "Gigan",
+          name: "Slathborg",
           srcImg: "./image/dragon-3.gif",
           altImg: "monster_3",
         },
         {
-          name: "Spiga",
+          name: "Stoor Worm",
           srcImg: "./image/dragon-4.gif",
           altImg: "monster_4",
         },
         {
-          name: "Kamacuras",
+          name: "Temeraire",
           srcImg: "./image/dragon-5.gif",
           altImg: "monster_5",
         },
         {
-          name: "Baragon",
+          name: "Viserion",
           srcImg: "./image/dragon-6.gif",
           altImg: "monster_6",
         },
         {
-          name: "Mothra",
+          name: "Faranth",
           srcImg: "./image/dragon-7.gif",
           altImg: "monster_7",
         },
         {
-          name: "MONSTER-8",
+          name: "Drakon",
           srcImg: "./image/dragon-8.gif",
           altImg: "monster_8",
         },
@@ -59,36 +59,57 @@ const app = Vue.createApp({
           name: "Erhadt",
           srcImg: "./image/User/erhardt-octopath.gif",
           altImg: "user_1",
+          skillQ: "./image/User/erhardt-octopath/SkillQ.png",
+          skillW: "./image/User/erhardt-octopath/SkillW.png",
+          skillR: "./image/User/erhardt-octopath/SkillR.png",
         },
         {
           name: "ShovelKnight",
-          srcImg: "./image/User/giac-dau-si.gif",
+          srcImg: "./image/User/giac_dau_si.gif",
           altImg: "user_2",
+          skillQ: "./image/User/giac_dau_si/SkillQ.png",
+          skillW: "./image/User/giac_dau_si/SkillW.png",
+          skillR: "./image/User/giac_dau_si/SkillR.png",
         },
         {
           name: "Arthur",
           srcImg: "./image/User/hiep_si.gif",
           altImg: "user_3",
+          skillQ: "./image/User/hiep_si/SkillQ.png",
+          skillW: "./image/User/hiep_si/SkillW.png",
+          skillR: "./image/User/hiep_si/SkillR.png",
         },
         {
           name: "Honda",
           srcImg: "./image/User/honda_sumo.gif",
           altImg: "user_4",
+          skillQ: "./image/User/honda_sumo/SkillQ.png",
+          skillW: "./image/User/honda_sumo/SkillW.png",
+          skillR: "./image/User/honda_sumo/SkillR.png",
         },
         {
           name: "Rochyn",
           srcImg: "./image/User/rochyn_idle.gif",
           altImg: "user_5",
+          skillQ: "./image/User/rochyn_idle/SkillQ.png",
+          skillW: "./image/User/rochyn_idle/SkillW.png",
+          skillR: "./image/User/rochyn_idle/SkillR.png",
         },
         {
           name: "Alex",
           srcImg: "./image/User/sorcerer.gif",
           altImg: "user_6",
+          skillQ: "./image/User/sorcerer/SkillQ.png",
+          skillW: "./image/User/sorcerer/SkillR.png",
+          skillR: "./image/User/sorcerer/SkillW.png",
         },
         {
           name: "Hakan",
           srcImg: "./image/User/Usfiv_hakan.gif",
           altImg: "user_7",
+          skillQ: "./image/User/Usfiv_hakan/SkillQ.png",
+          skillW: "./image/User/Usfiv_hakan/SkillW.png",
+          skillR: "./image/User/Usfiv_hakan/SkillR.png",
         },
       ],
       levels: [
@@ -102,110 +123,243 @@ const app = Vue.createApp({
           key: "Khó",
         },
       ],
+      descriptionMonster: [
+        {
+          infor: "Rồng 1",
+        },
+        {
+          infor: "Rồng 2",
+        },
+        {
+          infor: "Rồng 3",
+        },
+      ],
       isShowMonster: false,
       isShowDifficulty: false,
+      isShowRules: false,
       selectedMonster: 0,
       isShowCharacter: false,
       selectedCharacter: 0,
       selectedDifficulty: 0,
-      dragonBreath: new Audio("../mini-monster-slayer/sound/dragon-attack.mp3"),
-      warriorAttack: new Audio("../mini-monster-slayer/sound/user-attack.mp3"),
-      warriorAttack2: new Audio("../mini-monster-slayer/sound/user-attack2.mp3"),
-      healEffect: new Audio("../mini-monster-slayer/sound/heal_effect.mp3"),
-      attackCount: 0,
-      attackUntilEffect: false,
-      attackLowUntilEffect: false,
       isHealth: false,
+      isQ: false,
+      isMonsterSkill: false,
+      isW: false,
+      isR: false,
+      countMonsterAttacks: 0,
+      isShowResult: false,
+      soundQ: new Audio("./sound/skillQ.mp3"),
+      soundW: new Audio("./sound/skillW.mp3"),
+      soundR: new Audio("./sound/skillR.mp3"),
+      healEffect: new Audio("./sound/heal.mp3"),
+      soundVictory: new Audio("./sound/victory.mp3"),
+      soundDefeat: new Audio("./sound/defeat.mp3"),
+      soundMonster: new Audio("./sound/monsterSound.mp3"),
+      result: [
+        {
+          name: "Chiến thắng",
+          srcImg: "./image/winner.png",
+          altImg: "result1",
+        },
+        {
+          name: "Thua trận",
+          srcImg: "./image/defeat.png",
+          altImg: "result2",
+        },
+      ],
+      selectedResult: 0,
+
+      countQ: 0,
+      countW: 0,
     };
   },
+
   methods: {
-    userAttack() {
+    userAttack1() {
+      // this.checkHealths();
+      this.countQ += 1;
+      console.log("Q: " + this.countQ);
       this.isFighting = true;
+      this.userDamage1 = Math.floor(Math.random() * 6) + 5;
+      this.monsterHeart -= this.userDamage1; //this.monsterHeart = this.monsterHeart - this.userDamage
+      // this.checkHealths();
       setTimeout(() => {
-        this.monsterHeart -= Math.floor(Math.random() * 15) + 5;
         this.monsterAttack();
-      }, 5000); //this.monsterHeart = this.monsterHeart - this.userDamage
-      this.warriorAttack.play();
-      this.attackCount += 1;
-      if (this.attackCount == 2) {
-        this.isUntil = true;
-      }
-      this.typeAttack(1);
+        this.checkHealths();
+      }, 1500);
+      this.soundQ.play();
     },
     userAttack2() {
-      this.isFighting = true;
-      setTimeout(() => {
-        this.monsterHeart -= Math.floor(Math.random() * 25) + 15;
-        this.monsterAttack();
-      }, 1500);
-      this.warriorAttack2.play();
-      this.typeAttack(2);
+      // this.checkHealths();
+      let n = this.countQ;
+      console.log("nQ: " + n);
+      if (n >= 2) {
+        this.countQ -= 2;
+        console.log("Q: " + this.countQ);
+        this.countW += 1;
+        console.log("W: " + this.countW);
+        this.wCheck();
+        this.isFighting = true;
+        this.userDamage2 = Math.floor(Math.random() * 6) + 11;
+        this.monsterHeart -= this.userDamage2; //this.monsterHeart = this.monsterHeart - this.userDamage
+        // this.checkHealths();
+        setTimeout(() => {
+          this.monsterAttack();
+          this.checkHealths();
+        }, 1500);
+        this.soundW.play();
+      } else {
+        alert("Chưa được sử dụng kỹ năng này!");
+      }
     },
     userAttack3() {
-      this.isFighting = true;
-      setTimeout(() => {
-        this.monsterHeart -= Math.floor(Math.random() * 40) + 25;
-      }, 800); //this.monsterHeart = this.monsterHeart - this.userDamage
-      setTimeout(() => {
-        this.monsterAttack();
-      }, 1500);
-      this.warriorAttack2.play();
-      this.typeAttack(3);
+      // this.checkHealths();
+      let n = this.countW;
+      console.log("nW: " + n);
+      if (n >= 2) {
+        this.countW -= 2;
+        console.log("W: " + this.countW);
+        this.rCheck();
+        this.isFighting = true;
+        this.userDamage3 = Math.floor(Math.random() * 6) + 25;
+        this.monsterHeart -= this.userDamage3; //this.monsterHeart = this.monsterHeart - this.userDamage
+        // this.checkHealths();
+        setTimeout(() => {
+          this.monsterAttack();
+          this.checkHealths();
+        }, 1500);
+        this.soundR.play();
+      } else {
+        alert("Chưa được sử dụng kỹ năng này!");
+      }
     },
     monsterAttack() {
-      setTimeout(() => {
-        this.userHeart -= Math.floor(Math.random() * 25) + 15;
-        this.isFighting = false;
-        this.monsterAttackEffect = false;
-      }, 4000);
-      this.attackEffect = false;
-      this.dragonBreath.play();
-      this.typeAttack(0);
-    },
-    typeAttack(number) {
-      if (number == 1) {
-        this.attackEffect = true;
-      } else if (number == 2) {
-        this.attackLowUntilEffect = true;
-      } else if (number == 3) {
-        this.attackUntilEffect = true;
-      } else if (number == 4) {
-        this.isHealth = true;
-      } else if (number == 0) {
-        this.monsterAttackEffect = true;
+      if (this.monsterHeart <= 0) {
+        this.isMonsterSkill = false;
+        this.monsterDamage = 0;
+      } else {
+        let n = this.countMonsterAttacks;
+        if (this.selectedDifficulty == 0) {
+          this.monsterDamage = Math.floor(Math.random() * 4) + 5; // 5 - 8
+          if (n % 3 === 0 && this.countMonsterAttacks != 0) {
+            this.monsterDamage = (Math.floor(Math.random() * 4) + 5) * 2;
+          }
+        }
+        if (this.selectedDifficulty == 1) {
+          this.monsterDamage = Math.floor(Math.random() * 4) + 8; // 8 - 11
+          if (n % 3 === 0 && this.countMonsterAttacks != 0) {
+            this.monsterDamage = (Math.floor(Math.random() * 4) + 10) * 2;
+          }
+        }
+        if (this.selectedDifficulty == 2) {
+          this.monsterDamage = Math.floor(Math.random() * 6) + 11; // 12 - 16
+          if (n % 3 === 0 && this.countMonsterAttacks != 0) {
+            this.monsterDamage = (Math.floor(Math.random() * 6) + 12) * 2;
+          }
+        }
+        this.countMonsterAttacks += 1;
+        this.userHeart -= this.monsterDamage;
+        setTimeout(() => {
+          this.isFighting = false;
+        }, 1200);
+        this.checkSkillMonster();
+        this.soundMonster.play();
       }
+    },
+    checkHealths() {
+      if (this.userHeart <= 0) {
+        this.userHeart = 0;
+      }
+      if (this.monsterHeart <= 0) {
+        this.monsterHeart = 0;
+      }
+    },
+    checkSkillMonster() {
+      this.isMonsterSkill = true;
       setTimeout(() => {
-        this.attackEffect = false;
-      }, 4000);
-      setTimeout(() => {
-        this.attackLowUntilEffect = false;
-        this.attackUntilEffect = false;
+        this.isMonsterSkill = false;
       }, 1000);
-      setTimeout(() => {
-        this.isHealth = false;
-      }, 1500);
+    },
+    checkEnteredName() {
+      if (this.userName == "") {
+        alert("Vui lòng nhập tên của bạn!!!");
+      }
     },
     hidePopup() {
-      this.isShowPopup = !this.isShowPopup;
+      if (this.userName !== "") {
+        this.isShowPopup = !this.isShowPopup;
+      }
+    },
+    showPopup() {
+      if (this.userName !== "") {
+        this.isShowPopup = !this.isShowPopup;
+      }
     },
     addHealth() {
-      if (this.userHeart >= 80 || this.countHealth == 2) {
+      if (this.userHeart > 70 || this.countHealth == 2) {
       } else {
-        setTimeout(() => {
-          this.userHeart += this.health;
+        if (this.selectedDifficulty == 0) {
+          this.userHeart += 10;
           this.countHealth += 1;
-          this.healEffect.play();
-        }, 1500);
-        this.typeAttack(4);
+          if (this.countSkillHealth > 1) {
+            this.isHealth = false;
+          } else {
+            this.isHealth = true;
+            setTimeout(() => {
+              this.isHealth = false;
+            }, 1000);
+            this.countSkillHealth += 1;
+          }
+        }
+        if (this.selectedDifficulty == 1) {
+          this.userHeart += 15;
+          this.countHealth += 1;
+          if (this.countSkillHealth > 1) {
+            this.isHealth = false;
+          } else {
+            this.isHealth = true;
+            setTimeout(() => {
+              this.isHealth = false;
+            }, 1000);
+            this.countSkillHealth += 1;
+          }
+        }
+        if (this.selectedDifficulty == 2) {
+          this.userHeart += 20;
+          this.countHealth += 1;
+          if (this.countSkillHealth > 1) {
+            this.isHealth = false;
+          } else {
+            this.isHealth = true;
+            setTimeout(() => {
+              this.isHealth = false;
+            }, 1000);
+            this.countSkillHealth += 1;
+          }
+        }
+        this.healEffect.play();
       }
     },
     checkUserHeart() {
-      if (this.userHeart >= 80) {
-        alert("Bạn không thể hồi máu khi máu còn trên 80%");
+      if (this.userHeart == 100) {
+        alert("Bạn không thể hồi máu khi máu còn trên 100%");
+      }
+    },
+    showCharacter() {
+      if (this.userHeart < 100 || this.monsterHeart < 100) {
+        this.isShowCharacter = false;
+        alert("Trận đấu đang diễn ra...");
+      } else {
+        this.isShowCharacter = true;
       }
     },
     showMonsters() {
-      this.isShowMonster = true;
+      if (this.userHeart < 100 || this.monsterHeart < 100) {
+        this.isShowMonster = false;
+        alert("Trận đấu đang diễn ra...");
+      } else {
+        this.isShowMonster = true;
+      }
     },
     hideMonster() {
       this.isShowMonster = false;
@@ -218,11 +372,83 @@ const app = Vue.createApp({
       this.selectedCharacter = index;
       this.isShowCharacter = false;
     },
+    showDifficulty() {
+      if (this.userHeart < 100 || this.monsterHeart < 100) {
+        this.isShowDifficulty = false;
+        alert("Trận đấu đang diễn ra...");
+      } else {
+        this.isShowDifficulty = true;
+      }
+    },
     handleDifficulty(index) {
       this.selectedDifficulty = index;
       this.isShowDifficulty = false;
-      console.log(index);
     },
+    showRules() {
+      this.isShowRules = true;
+    },
+    showBoxes() {
+      if (this.userHeart < 100 || this.monsterHeart < 100) {
+        this.isShowCharacter = false;
+        this.isShowDifficulty = false;
+        alert("Trận đấu đang diễn ra...");
+      }
+    },
+    hideRules() {
+      this.isShowRules = false;
+    },
+    // healthCheck() {
+    //   if (this.userHeart > 50) {
+    //     this.isHealth = false;
+    //   } else {
+    //     if (this.countSkillHealth > 1) {
+    //       this.isHealth = false;
+    //     } else {
+    //       this.isHealth = true;
+    //       setTimeout(() => {
+    //         this.isHealth = false;
+    //       }, 1000);
+    //       this.countSkillHealth += 1;
+    //     }
+    //   }
+    // },
+    qCheck() {
+      this.isQ = true;
+      setTimeout(() => {
+        this.isQ = false;
+      }, 1000);
+    },
+    rCheck() {
+      this.isR = true;
+      setTimeout(() => {
+        this.isR = false;
+      }, 1000);
+    },
+    wCheck() {
+      this.isW = true;
+      setTimeout(() => {
+        this.isW = false;
+      }, 1000);
+    },
+    // handleResult(index) {
+    //   this.selectedResult = index;
+    //   this.isShowResult = true;
+    // },
+    // closeResult() {
+    //   this.isShowResult = false;
+    // },
+    // rePlay() {
+    //   this.isShowResult = false;
+    //   this.userHeart = 100;
+    //   this.monsterHeart = 100;
+    //   this.userDamage1 = 1;
+    //   this.userDamage2 = 1;
+    //   this.userDamage3 = 1;
+    //   this.monsterDamage = 1;
+    //   this.health = 10;
+    //   this.countHealth = 0;
+    //   this.countSkillHealth = 0;
+    // },
   },
   computed: {
     monsterSelect() {
@@ -237,13 +463,27 @@ const app = Vue.createApp({
       let index = this.selectedDifficulty;
       return this.levels[index];
     },
+    // resultSelect() {
+    //   let index = this.selectedResult;
+    //   return this.result[index];
+    // },
   },
   watch: {
-    userHeart() {
-      if (this.userHeart <= 10 && this.userHeart > 0) {
-        setTimeout(function () {
-          alert("HP của bạn đang dưới 10%, cần bổ sung HP");
-        }, 700);
+    selectedDifficulty() {
+      if (this.selectedDifficulty == 0) {
+        setTimeout(() => {
+          alert("Độ khó hiện tại: Dễ");
+        }, 500);
+      }
+      if (this.selectedDifficulty == 1) {
+        setTimeout(() => {
+          alert("Độ khó hiện tại: Trung Bình");
+        }, 500);
+      }
+      if (this.selectedDifficulty == 2) {
+        setTimeout(() => {
+          alert("Độ khó hiện tại: Khó");
+        }, 500);
       }
     },
   },
