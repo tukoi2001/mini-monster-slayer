@@ -342,8 +342,8 @@ section {
 .notify {
   position: absolute;
   top: auto;
-  left: 280px;
-  bottom: 77px;
+  left: 370px;
+  bottom: 200px;
 }
 
 .notify__para {
