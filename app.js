@@ -155,6 +155,8 @@ const app = Vue.createApp({
       soundVictory: new Audio("./sound/victory.mp3"),
       soundDefeat: new Audio("./sound/defeat.mp3"),
       soundMonster: new Audio("./sound/monsterSound.mp3"),
+      checkWin: false,
+      checkLose: false,
       result: [
         {
           name: "Chiến thắng",
@@ -237,6 +239,10 @@ const app = Vue.createApp({
       if (this.monsterHeart <= 0) {
         this.isMonsterSkill = false;
         this.monsterDamage = 0;
+        setTimeout(() => {
+          this.checkWin = true;
+          this.soundVictory.play();
+        }, 500);
       } else {
         let n = this.countMonsterAttacks;
         if (this.selectedDifficulty == 0) {
@@ -266,9 +272,16 @@ const app = Vue.createApp({
         this.soundMonster.play();
       }
     },
+    reload() {
+      location.reload();
+    },
     checkHealths() {
       if (this.userHeart <= 0) {
         this.userHeart = 0;
+        setTimeout(() => {
+          this.checkLose = true;
+          this.soundDefeat.play();
+        }, 800);
       }
       if (this.monsterHeart <= 0) {
         this.monsterHeart = 0;
