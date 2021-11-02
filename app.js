@@ -158,11 +158,19 @@ const app = Vue.createApp({
       soundMonster: new Audio("./sound/monsterSound.mp3"),
       checkWin: false,
       checkLose: false,
+      isShowMenu: true,
     };
   },
   methods: {
+    hideMenu() {
+      this.isShowMenu = false;
+    },
+    showMenu() {
+      this.isShowMenu = true;
+    },
     userAttack1() {
       // this.checkHealths();
+      this.hideMenu();
       this.countQ += 1;
       console.log("Q: " + this.countQ)
       this.isFighting = true;
@@ -430,25 +438,19 @@ const app = Vue.createApp({
         this.isW = false;
       }, 1000);
     },
-    // handleResult(index) {
-    //   this.selectedResult = index;
-    //   this.isShowResult = true;
-    // },
-    // closeResult() {
-    //   this.isShowResult = false;
-    // },
-    // rePlay() {
-    //   this.isShowResult = false;
-    //   this.userHeart = 100;
-    //   this.monsterHeart = 100;
-    //   this.userDamage1 = 1;
-    //   this.userDamage2 = 1;
-    //   this.userDamage3 = 1;
-    //   this.monsterDamage = 1;
-    //   this.health = 10;
-    //   this.countHealth = 0;
-    //   this.countSkillHealth = 0;
-    // },
+    rePlay() {
+      this.showMenu();
+      this.checkWin = false;
+      this.checkLose = false;
+      this.userHeart = 100;
+      this.monsterHeart = 100;
+      this.userDamage1 = 1;
+      this.userDamage2 = 1;
+      this.userDamage3 = 1;
+      this.monsterDamage = 1;
+      this.countHealth = 0;
+      this.countSkillHealth = 0;
+    },
   },
   computed: {
     monsterSelect() {
@@ -463,10 +465,6 @@ const app = Vue.createApp({
       let index = this.selectedDifficulty;
       return this.levels[index];
     },
-    // resultSelect() {
-    //   let index = this.selectedResult;
-    //   return this.result[index];
-    // },
   },
   watch: {
     selectedDifficulty() {

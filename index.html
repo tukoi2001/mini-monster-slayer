@@ -20,7 +20,7 @@
 
     <div id="app">
         <div class="nav p-2 d-flex justify-content-around align-items-center">
-            <ul class="nav-bar list-unstyled">
+            <ul class="nav-bar list-unstyled" v-if="isShowMenu">
                 <li class="nav-para" @click="showPopup()">Đổi tên</li>
                 <li class="nav-para" @click="showCharacter()">Nhân vật</li>
                 <li class="nav-para" @click="showMonsters()">Quái vật</li>
@@ -28,7 +28,7 @@
                 <li class="nav-para" @click="showRules()">Luật chơi</li>
             </ul>
         </div>
-        <div class="vs">
+        <div class="vs" v-if="isShowMenu">
             <img class="vs__img" src="./image/vs2.png" alt="" />
         </div>
         <div class="container">
@@ -56,6 +56,10 @@
                    
                     <div class="skill-healths" @click="addHealth(), checkUserHeart()">
                         <img src="./image/heal.png" class="skill-box__img" alt="skill4">
+                    </div>
+
+                    <div class="notify">
+                        <p class="notify__para" v-if="countHealth == 2 ? true : false">Bạn đã hết quyền hồi máu!</p>
                     </div>
                     
                 </div>
@@ -87,9 +91,6 @@
                 </div>
             </div>
         </div>
-        <div class="notify">
-            <p class="notify__para" v-if="countHealth == 2 ? true : false">Bạn đã hết quyền hồi máu!</p>
-        </div>
 
         <!-- Quái vật -->
         <div class="box-monster" v-if="isShowMonster">
@@ -106,9 +107,8 @@
             </div>
         </div>
 
-         <!-- Quái vật-->
 
-        <!-- Popup Start -->
+
         <transition name="fade" v-if="isShowPopup">
             <div class="popup-start">
                 <div class="popup-start__box">
@@ -120,11 +120,15 @@
                     <div class="social-contacts">
                         <a href="https://www.facebook.com/longrui.09" target="_blank"><i class="social-icon fab fa-facebook-square"></i></a>
                     </div>
+                    <div class="intro">
+                        <p class="intro__para">
+                            &#169; Copyright Nhóm 4
+                        </p>
+                    </div>
                 </div>
             </div>
         </transition>
-        <!-- Popup Start -->
-        <!-- Nhân vật -->
+ 
 
         <div class="box-character" v-if="isShowCharacter">
             <div class="monster-title position-relative">
@@ -140,12 +144,6 @@
             </div>
         </div>
 
-
-        <!-- Nhân vật -->
-
-        <!-- Quái vật -->
-
-        <!-- Độ khó -->
         <div class="level" v-if="isShowDifficulty">
             <div class="level__container ">
                 <div class="level__content">
@@ -163,11 +161,13 @@
                 </div>
             </div>
         </div>
-        <!-- Độ khó -->
+
+
         <div class="difficul">
             <h2 class="difficul__title">Độ khó: {{ difficulSelect.key }}</h2>
         </div>
-        <!-- Luật chơi -->
+
+
         <div class="rule-box" v-if="isShowRules">
             <div class="rule__container">
                 <div class="rule__content">
@@ -194,21 +194,23 @@
                 </div>
             </div>
         </div>
-        <!-- Luật chơi -->
 
        <div class="box-checkwin" v-if="checkWin">
         <div class="frame-box">
           <img src="./image/winner.png" alt="" />
-          <img src="./image/button-new.png" alt="" @click="reload()" />
-          <!-- <a href="#">Chơi lại</a> -->
+          <div class="btn__box">
+            <button type="submit" class="btn btn-primary" @click="rePlay()">Chơi lại</button>
+            <button type="submit" class="btn btn-primary" @click="reload()">Quay lại</button>
+          </div>
         </div>
       </div>
       <div class="box-checklose" v-if="checkLose">
         <div class="frame-box">
           <img src="./image/defeat.png" alt="" />
-          <img src="./image/button-new.png" alt="" @click="reload()" />
-
-          <!-- <a href="#">Chơi lại</a> -->
+          <div class="btn__box">
+            <button type="submit" class="btn btn-primary" @click="rePlay()">Chơi lại</button>
+            <button type="submit" class="btn btn-primary" @click="reload()">Quay lại</button>
+          </div>
         </div>
     </div>
     <script src="https://unpkg.com/vue@next"></script>
