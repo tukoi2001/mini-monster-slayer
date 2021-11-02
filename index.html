@@ -196,18 +196,20 @@
         </div>
         <!-- Luật chơi -->
 
-        <!-- <div class="box-result" v-if="isShowResult">
-            <img :src="resultSelect.srcImg" class="box-result__img" alt="resultSelect.altImg">
-        <ul class="result_button_list">
-            <li class="result_button" v-on:click="closeResult()"> 
-                Đóng
-            </li>
-            <li class="rerult_button" v-on:click="rePlay()"> 
-               Chơi lại
-            </li>
-        </ul>
-        </div> -->
+       <div class="box-checkwin" v-if="checkWin">
+        <div class="frame-box">
+          <img src="./image/winner.png" alt="" />
+          <img src="./image/button-new.png" alt="" @click="reload()" />
+          <!-- <a href="#">Chơi lại</a> -->
+        </div>
+      </div>
+      <div class="box-checklose" v-if="checkLose">
+        <div class="frame-box">
+          <img src="./image/defeat.png" alt="" />
+          <img src="./image/button-new.png" alt="" @click="reload()" />
 
+          <!-- <a href="#">Chơi lại</a> -->
+        </div>
     </div>
     <script src="https://unpkg.com/vue@next"></script>
     <script src="app.js"></script>
