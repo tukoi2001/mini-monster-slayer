@@ -247,7 +247,10 @@ section {
     align-items: center;
     justify-content: center;
     display: flex;
-    background-color: #161c22;
+    background-image: url(./image/back-start.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
     z-index: 99;
 }
 .popup-start__box {
@@ -259,7 +262,7 @@ section {
     text-shadow: 3px 3px rgba(187, 5, 5, 0.295);
     font-size: 78px;
     color: #FFFFFF;
-    margin-bottom: 50px;
+    margin-bottom: 30px;
     animation: zoomFaceOut ease 1s;
 }
 .popup-start__input {
